@@ -20,6 +20,9 @@ export default function LandingPage() {
               <Link href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Features
               </Link>
+              <Link href="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Full Guide
+              </Link>
               <Link href="#solution" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Solution
               </Link>
@@ -313,11 +316,69 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 lg:px-8 border-t border-border/50">
+      <footer className="py-16 px-6 lg:px-8 border-t border-border/50 bg-card/30">
         <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Team Section */}
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <Image
+                src="/red-dragon-logo.png"
+                alt="Team Red-Dragon Logo"
+                width={80}
+                height={80}
+                className="object-contain"
+              />
+            </div>
+            <h3 className="text-2xl font-bold mb-2 text-foreground">Made by Team Red-Dragon</h3>
+            <p className="text-muted-foreground mb-8">Building the future of AI-powered government auditing</p>
+
+            {/* Team Members Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">VP</span>
+                </div>
+                <h4 className="font-semibold text-sm mb-1">V C Premchand Yadav</h4>
+                <p className="text-xs text-muted-foreground">Team Lead</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">PR</span>
+                </div>
+                <h4 className="font-semibold text-sm mb-1">P R Kiran Kumar Reddy</h4>
+                <p className="text-xs text-muted-foreground">Developer</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">ES</span>
+                </div>
+                <h4 className="font-semibold text-sm mb-1">Edupulapati Sai Praneeth</h4>
+                <p className="text-xs text-muted-foreground">Developer</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">CM</span>
+                </div>
+                <h4 className="font-semibold text-sm mb-1">C R Mohith Reddy</h4>
+                <p className="text-xs text-muted-foreground">Developer</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer Bottom */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border/50">
             <div className="flex items-center gap-3">
-              <Image src="/auditx-logo.jpeg" alt="AuditX Logo" width={32} height={32} className="rounded-lg" />
+              {/* AuditX logo fixed to be icon-style without white borders */}
+              <Image
+                src="/auditx-logo.jpeg"
+                alt="AuditX Logo"
+                width={32}
+                height={32}
+                className="rounded-full object-cover"
+              />
               <span className="text-xl font-bold text-foreground">AuditX</span>
             </div>
             <p className="text-sm text-muted-foreground">Government-grade AI-powered fraud detection © 2025</p>

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-type Theme = "holographic" | "light" | "black" | "google"
+type Theme = "holographic" | "light" | "black" | "google" | "bharat" | "cyber" | "premium" | "gov" | "tech"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -40,16 +40,33 @@ export function ThemeProvider({
   React.useEffect(() => {
     const root = window.document.documentElement
 
-    // Remove all theme classes
-    root.classList.remove("theme-light", "theme-black", "theme-google")
+    root.classList.remove(
+      "theme-light",
+      "theme-black",
+      "theme-google",
+      "theme-bharat",
+      "theme-cyber",
+      "theme-premium",
+      "theme-gov",
+      "theme-tech",
+    )
 
-    // Add the selected theme class
     if (theme === "light") {
       root.classList.add("theme-light")
     } else if (theme === "black") {
       root.classList.add("theme-black")
     } else if (theme === "google") {
       root.classList.add("theme-google")
+    } else if (theme === "bharat") {
+      root.classList.add("theme-bharat")
+    } else if (theme === "cyber") {
+      root.classList.add("theme-cyber")
+    } else if (theme === "premium") {
+      root.classList.add("theme-premium")
+    } else if (theme === "gov") {
+      root.classList.add("theme-gov")
+    } else if (theme === "tech") {
+      root.classList.add("theme-tech")
     }
     // holographic is the default in :root, so no class needed
 

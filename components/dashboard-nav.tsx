@@ -19,6 +19,14 @@ import {
   Newspaper,
   Sparkles,
   GitCompare as FileCompare,
+  Layers,
+  FileCheck,
+  HelpCircle,
+  TrendingUp,
+  Bookmark,
+  Clock,
+  Tags,
+  MapPin,
 } from "lucide-react"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import Image from "next/image"
@@ -35,9 +43,34 @@ const navItems = [
     icon: Newspaper,
   },
   {
+    title: "Company Intelligence",
+    href: "/dashboard/company-intel",
+    icon: Search,
+  },
+  {
     title: "AI Copilot",
     href: "/dashboard/ai-copilot",
     icon: Sparkles,
+  },
+  {
+    title: "Batch Analysis",
+    href: "/dashboard/batch-analyze",
+    icon: Layers,
+  },
+  {
+    title: "Contract Validation",
+    href: "/dashboard/contract-validation",
+    icon: FileCheck,
+  },
+  {
+    title: "Policy Q&A",
+    href: "/dashboard/policy-qa",
+    icon: HelpCircle,
+  },
+  {
+    title: "Predictive Analytics",
+    href: "/dashboard/predictive",
+    icon: TrendingUp,
   },
   {
     title: "Compare Documents",
@@ -55,6 +88,21 @@ const navItems = [
     icon: Search,
   },
   {
+    title: "Bookmarks",
+    href: "/dashboard/bookmarks",
+    icon: Bookmark,
+  },
+  {
+    title: "Activity Timeline",
+    href: "/dashboard/activity",
+    icon: Clock,
+  },
+  {
+    title: "Tags Manager",
+    href: "/dashboard/tags",
+    icon: Tags,
+  },
+  {
     title: "Transactions",
     href: "/dashboard/transactions",
     icon: Receipt,
@@ -67,6 +115,21 @@ const navItems = [
   {
     title: "Vendor Analytics",
     href: "/dashboard/vendors",
+    icon: Network,
+  },
+  {
+    title: "Department Benchmarking",
+    href: "/dashboard/benchmarking",
+    icon: BarChart3,
+  },
+  {
+    title: "Risk Heatmap",
+    href: "/dashboard/heatmap",
+    icon: MapPin,
+  },
+  {
+    title: "Network Graph",
+    href: "/dashboard/network-graph",
     icon: Network,
   },
   {
@@ -109,7 +172,13 @@ export function DashboardNav() {
       <div className="flex flex-col h-full">
         {/* Logo */}
         <div className="h-16 flex items-center gap-3 px-6 border-b border-sidebar-border">
-          <Image src="/auditx-logo.jpeg" alt="AuditX Logo" width={32} height={32} className="rounded-lg" />
+          <Image
+            src="/auditx-logo.jpeg"
+            alt="AuditX Logo"
+            width={32}
+            height={32}
+            className="rounded-full object-cover"
+          />
           <span className="text-xl font-bold text-sidebar-foreground">AuditX</span>
         </div>
 
