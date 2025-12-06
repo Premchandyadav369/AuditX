@@ -229,4 +229,4 @@ Special thanks to the platforms that made AuditX possible:
  
 ---
  
-Made with ❤️ and 🤖 in India
+Made with ❤️ and 🤖 in India.
