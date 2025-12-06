@@ -11,290 +11,224 @@
 
 _"Transparency is the currency of trust."_
 
-AuditX is a comprehensive, AI-powered platform designed to detect and prevent \*\*fraud, waste, and abuse\*\* in government and enterprise financial operations.
+AuditX is a comprehensive, AI-powered platform designed to detect and prevent **fraud, waste, and abuse** in government and enterprise financial operations.
 
-By leveraging \*\*Google Gemini AI\*\*, advanced analytics, and anomaly detection, AuditX ensures \*\*financial integrity, accountability, and transparency\*\*.
+By leveraging **Google Gemini AI**, advanced analytics, and anomaly detection, AuditX ensures **financial integrity, accountability, and transparency**.
 
-\---
+---
 
-\## 📑 Table of Contents
+## 📑 Table of Contents
 
-\- \[About the Project\](#-about-the-project)
+- [About the Project](#-about-the-project)
+- [Key Features](#-key-features)
+- [How It Works (Workflow)](#-how-it-works-workflow)
+- [How AuditX Helps the Government of India](#-how-auditx-helps-the-government-of-india)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+- [Environment Variables](#-environment-variables)
+- [Future Developments](#-future-developments)
+- [The Team](#-the-team)
+- [Acknowledgements](#-acknowledgements)
 
-\- \[Key Features\](#-key-features)
+---
 
-\- \[How It Works\](#-how-it-works-workflow)
-
-\- \[How AuditX Helps the Government of India\](#-how-auditx-helps-the-government-of-india)
-
-\- \[Tech Stack\](#-tech-stack)
-
-\- \[Getting Started\](#-getting-started)
-
-\- \[Environment Variables\](#-environment-variables)
-
-\- \[Future Developments\](#-future-developments)
-
-\- \[The Team\](#-the-team)
-
-\- \[Acknowledgements\](#-acknowledgements)
-
-\---
-
-\## 📖 About the Project
+## 📖 About the Project
 
 AuditX serves as a powerful tool to combat corruption, improve accountability, and promote transparent financial governance.
 
-\### \*\*Why AuditX?\*\*
+### **Why AuditX?**
 
-\- 🤖 \*\*Automated Anomaly Detection\*\* — eliminates bias and human error
+- 🤖 **Automated Anomaly Detection** — eliminates bias and human error
+- 📊 **Data-Driven Insights** — deep visibility into spending
+- ⚖️ **Accountability** — immutable audit trails
+- 👁️ **Transparency** — clear financial monitoring
 
-\- 📊 \*\*Data-Driven Insights\*\* — deep visibility into spending
+---
 
-\- ⚖️ \*\*Accountability\*\* — immutable audit trails
+## 🚀 Key Features
 
-\- 👁️ \*\*Transparency\*\* — clear financial monitoring
+### 📄 Document Upload & AI Analysis
 
-\---
+- Drag-and-drop invoices, PDFs, images, spreadsheets
+- Google Gemini AI extracts:
+  - Vendor Name
+  - Dates
+  - Amounts
+  - Line Items
+- Automatic **Fraud Risk Scoring (0–100)**
+- Secure storage in Supabase
 
-\## 🚀 Key Features
-
-\### 📄 Document Upload & AI Analysis
-
-\- Drag-and-drop invoices, PDFs, images, spreadsheets
-
-\- Google Gemini AI extracts:
-
-\- Vendor Name
-
-\- Dates
-
-\- Amounts
-
-\- Line Items
-
-\- Automatic \*\*Fraud Risk Scoring (0–100)\*\*
-
-\- Secure storage in Supabase
-
-\### 🤖 AI Copilot
+### 🤖 AI Copilot
 
 Ask natural-language questions:
 
-\- “Which vendors have the highest risk?”
+- “Which vendors have the highest risk?”
+- “Show transactions above ₹10 lakhs last month.”
 
-\- “Show transactions above ₹10 lakhs last month.”
+### 🚨 Fraud Detection & Alerts
 
-\### 🚨 Fraud Detection & Alerts
+- Real-time 24/7 AI monitoring
+- Non-linear fraud pattern detection
+- Instant notifications for high-risk events
 
-\- Real-time 24/7 AI monitoring
+### 📰 Real-Time News Intelligence
 
-\- Non-linear fraud pattern detection
+- Global fraud & corruption news (50+ sources)
+- India-specific updates from CAG, CBI, regulators
 
-\- Instant notifications for high-risk events
+### 📈 Analytics Dashboard
 
-\### 📰 Real-Time News Intelligence
+- Real-time KPIs
+- Cross-ministry comparisons
+- Vendor performance & risk profiling
 
-\- Global fraud & corruption news (50+ sources)
+### ⚖️ Compliance & Case Management
 
-\- India-specific updates from CAG, CBI, regulators
+- Track violations
+- Full case history
+- AI-generated audit reports
 
-\### 📈 Analytics Dashboard
+---
 
-\- Real-time KPIs
+## 🔄 How It Works (Workflow)
 
-\- Cross-ministry comparisons
+1. **Login & Access Dashboard**
+2. **Upload Financial Documents**
+3. **AI Extracts & Scores Risk Automatically**
+4. **Review Alerts & Insights**
+5. **Analyze Vendor Profiles**
+6. **Monitor Compliance**
+7. **Ask the AI Copilot Anything**
+8. **Generate Audit Reports**
+9. **Stay Updated via Global & National News**
 
-\- Vendor performance & risk profiling
+---
 
-\### ⚖️ Compliance & Case Management
+## 🇮🇳 How AuditX Helps the Government of India
 
-\- Track violations
+AuditX aligns with India's vision of **Digital India**, **Good Governance**, and **Atmanirbhar Bharat** by ensuring every taxpayer Rupee reaches its rightful destination.
 
-\- Full case history
+### 🏛 Strategic Government Use Cases
 
-\- AI-generated audit reports
+#### **1. Strengthening CAG & CBI**
 
-\---
+- AI pre-screens thousands of invoices instantly
+- Flags ghost vendors, duplicate payments, inflated bills
 
-\## 🔄 How It Works (Workflow)
+#### **2. DBT (Direct Benefit Transfer) Security**
 
-1\. \*\*Login & Access Dashboard\*\*
+- Detects:
+  - Ghost beneficiaries
+  - Identity fraud
+  - Duplicate/fake payouts
 
-2\. \*\*Upload Financial Documents\*\*
+#### **3. Public Procurement Integrity**
 
-3\. \*\*AI Extracts & Scores Risk Automatically\*\*
+- Analyzes tender patterns to detect:
+  - Bid-rigging
+  - Cartelization
+  - Circular payments
 
-4\. \*\*Review Alerts & Insights\*\*
+#### **4. GST Fraud Detection**
 
-5\. \*\*Analyze Vendor Profiles\*\*
+- Cross-matches invoices
+- Identifies fake input tax credit claims
+- Detects circular trading networks
 
-6\. \*\*Monitor Compliance\*\*
+#### **5. Department-Level Financial Oversight**
 
-7\. \*\*Ask the AI Copilot Anything\*\*
+- Automated risk scores
+- Spending heatmaps
+- Real-time anomaly dashboards
 
-8\. \*\*Generate Audit Reports\*\*
+#### **6. Future: Multilingual Support**
 
-9\. \*\*Stay Updated via Global & National News\*\*
+- Hindi, Telugu, Tamil, and more for state-level auditors
 
-\---
+---
 
-\## 🇮🇳 How AuditX Helps the Government of India
-
-AuditX aligns with India's vision of \*\*Digital India\*\*, \*\*Good Governance\*\*, and \*\*Atmanirbhar Bharat\*\* by ensuring every taxpayer Rupee reaches its rightful destination.
-
-\### 🏛 Strategic Government Use Cases
-
-\#### \*\*1. Strengthening CAG & CBI\*\*
-
-\- AI pre-screens thousands of invoices instantly
-
-\- Flags ghost vendors, duplicate payments, inflated bills
-
-\#### \*\*2. DBT (Direct Benefit Transfer) Security\*\*
-
-\- Detects:
-
-\- Ghost beneficiaries
-
-\- Identity fraud
-
-\- Duplicate/fake payouts
-
-\#### \*\*3. Public Procurement Integrity\*\*
-
-\- Analyzes tender patterns to detect:
-
-\- Bid-rigging
-
-\- Cartelization
-
-\- Circular payments
-
-\#### \*\*4. GST Fraud Detection\*\*
-
-\- Cross-matches invoices
-
-\- Identifies fake input tax credit claims
-
-\- Detects circular trading networks
-
-\#### \*\*5. Department-Level Financial Oversight\*\*
-
-\- Automated risk scores
-
-\- Spending heatmaps
-
-\- Real-time anomaly dashboards
-
-\#### \*\*6. Future: Multilingual Support\*\*
-
-\- Hindi, Telugu, Tamil, and more for state-level auditors
-
-\---
-
-\## 💻 Tech Stack
+## 💻 Tech Stack
 
 | Component | Technology |
-
 |--------------|------------|
-
 | Frontend | Next.js 14, React, Tailwind CSS, Radix UI, Shadcn UI |
-
 | Backend | Node.js, Next.js Server Actions |
-
 | Database | Supabase (PostgreSQL) |
-
 | Auth | Supabase Auth |
-
 | AI / ML | Google Gemini AI, Python (planned) |
-
 | Hosting | Vercel |
-
 | External APIs| NewsAPI, Google OCR |
 
-\---
+---
 
-\## 🏁 Getting Started
+## 🏁 Getting Started
 
-\### \*\*Prerequisites\*\*
+### **Prerequisites**
 
-\- Node.js 18+
+- Node.js 18+
+- npm / yarn
+- Supabase account
+- Google Cloud Gemini API access
 
-\- npm / yarn
+### **Installation**
 
-\- Supabase account
-
-\- Google Cloud Gemini API access
-
-\### \*\*Installation\*\*
-
-\`\`\`bash
-
+```bash
 git clone https://github.com/your-repo/auditx.git
-
 cd auditx
-
 npm install
-
 npm run dev
+```
 
-Access the app at:
+Access the app at: 👉 http://localhost:3000
 
-👉 http://localhost:3000
+### 🔐 Environment Variables
 
-🔐 Environment Variables
+Create a `.env.local` file and add the following variables:
 
-Create .env.local:
-
-\`\`\`dotenv
+```dotenv
 # Supabase
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
 # Google Gemini
 GOOGLE_API_KEY=your_gemini_api_key
+
 # NewsAPI
 NEWS_API_KEY=your_news_api_key
-\`\`\`
+```
 
-🔮 Future Developments
+---
 
-⛓️ Blockchain-based audit trails
+## 🔮 Future Developments
 
-📱 Mobile App for auditors
+- ⛓️ Blockchain-based audit trails
+- 📱 Mobile App for auditors
+- 🧠 Custom LLMs for financial regulations
+- 🌐 Regional language support
 
-🧠 Custom LLMs for financial regulations
+---
 
-🌐 Regional language support
+## 👥 Meet the Team
 
-👥 Meet the Team
+- **V C Premchand Yadav** — VP, Team Leader & Chief Developer
+- **P R Kiran Kumar Reddy** — AI Generalist & Product Strategist
+- **Edupulapati Sai Praneeth** — AI/ML & Deep Learning Engineer
+- **C R Mohith Reddy** — Backend Developer
+- **K Sri Harsha Vardhan** — Testing & Model Optimization
+- **Liel Stephen** — Data Analyst & Visualization Specialist
 
+---
 
-
-V C Premchand Yadav — VP, Team Leader & Chief Developer
-
-P R Kiran Kumar Reddy — AI Generalist & Product Strategist
-
-Edupulapati Sai Praneeth — AI/ML & Deep Learning Engineer
-
-C R Mohith Reddy — Backend Developer
-
-K Sri Harsha Vardhan — Testing & Model Optimization
-
-Liel Stephen — Data Analyst & Visualization Specialist
-
-🙏 Acknowledgements
+## 🙏 Acknowledgements
 
 Special thanks to the platforms that made AuditX possible:
 
-Vercel — Hosting
+- Vercel — Hosting
+- Google Gemini AI — Core intelligence
+- Supabase — Backend + Auth
+- Google Antigravity — Agentic AI based code editor
+- ChatGPT — Debugging, architecture refinement, and development support
 
-Google Gemini AI — Core intelligence
-
-Supabase — Backend + Auth
-
-Google Antigravity — Agentic AI based code editor
-
-ChatGPT — Debugging, architecture refinement, and development support
+---
 
 Made with ❤️ and 🤖 in India
