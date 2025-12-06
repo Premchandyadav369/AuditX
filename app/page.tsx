@@ -365,9 +365,9 @@ export default function LandingPage() {
                   <span className="text-white font-bold text-xl">ES</span>
                 </div>
                 <h4 className="font-bold text-lg mb-1">Edupulapati Sai Praneeth</h4>
-                <p className="text-sm font-semibold text-foreground mb-2">Frontend Developer</p>
+                <p className="text-sm font-semibold text-foreground mb-2">AI/ML & Deep Learning Engineer</p>
                 <p className="text-xs text-muted-foreground">
-                  UI/UX design, dashboard components, and responsive layouts
+                  Neural networks, fraud detection models, and advanced AI algorithms
                 </p>
               </div>
 
@@ -376,9 +376,9 @@ export default function LandingPage() {
                   <span className="text-white font-bold text-xl">CM</span>
                 </div>
                 <h4 className="font-bold text-lg mb-1">C R Mohith Reddy</h4>
-                <p className="text-sm font-semibold text-foreground mb-2">AI/ML Engineer</p>
+                <p className="text-sm font-semibold text-foreground mb-2">Backend Developer</p>
                 <p className="text-xs text-muted-foreground">
-                  Fraud detection models, document analysis, and predictive algorithms
+                  Database architecture, API development, and server-side logic
                 </p>
               </div>
 
