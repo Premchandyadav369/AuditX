@@ -21,19 +21,32 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
+    console.log("[v0] Login attempt started for:", email)
     const supabase = createClient()
     setIsLoading(true)
     setError(null)
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      console.log("[v0] Calling Supabase signInWithPassword...")
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
+
+      console.log("[v0] Auth response:", { data, error })
+
       if (error) throw error
-      router.push("/dashboard")
+
+      if (data?.user) {
+        console.log("[v0] Login successful, user:", data.user.id)
+        // Force a hard navigation to ensure middleware runs
+        window.location.href = "/dashboard"
+      } else {
+        throw new Error("Login succeeded but no user data returned")
+      }
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred")
+      console.error("[v0] Login error:", error)
+      setError(error instanceof Error ? error.message : "An error occurred during login")
     } finally {
       setIsLoading(false)
     }
