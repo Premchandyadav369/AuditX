@@ -1,58 +1,300 @@
-# AuditX: AI-Powered Fraud Detection and Prevention Platform
+![AuditX Logo](https://i.ibb.co/W4Gfc2p8/auditx1.jpg)
 
-AuditX is a comprehensive, AI-powered platform designed to detect and prevent fraud, waste, and abuse in government and enterprise settings. By leveraging advanced data analytics, machine learning, and anomaly detection, AuditX provides a transparent and efficient solution to ensure financial integrity and accountability.
+🛡️ AuditX: AI-Powered Fraud Detection & Prevention Platform
+============================================================
 
-## Key Features
+![](https://img.shields.io/badge/Status-Active-success)
 
-- **Real-time Fraud Detection:** Proactively identifies suspicious transactions and activities in real time.
-- **AI-Powered Analytics:** Utilizes machine learning algorithms to uncover complex fraud patterns and anomalies.
-- **Comprehensive Reporting:** Generates detailed reports and visualizations to support audits and investigations.
-- **Secure and Scalable:** Built on a robust and scalable architecture to handle large volumes of data securely.
-- **User-friendly Interface:** An intuitive and easy-to-use dashboard for auditors, investigators, and administrators.
+![](https://img.shields.io/badge/License-MIT-blue)
 
-## Getting Started
+![](https://img.shields.io/badge/Stack-Next.js | Supabase | Gemini AI-orange)
 
-To get started with AuditX, follow these steps:
+_"Transparency is the currency of trust."_
 
-1. **Clone the repository:** `git clone https://github.com/your-repo/auditx.git`
-2. **Install dependencies:** `npm install`
-3. **Set up environment variables:** Create a `.env.local` file and add the necessary environment variables.
-4. **Run the development server:** `npm run dev`
-5. **Open your browser:** Navigate to `http://localhost:3000` to access the AuditX dashboard.
+AuditX is a comprehensive, AI-powered platform designed to detect and prevent \*\*fraud, waste, and abuse\*\* in government and enterprise financial operations.
 
-## Combating Corruption and Ensuring Transparency
+By leveraging \*\*Google Gemini AI\*\*, advanced analytics, and anomaly detection, AuditX ensures \*\*financial integrity, accountability, and transparency\*\*.
 
-AuditX is a powerful tool that can assist governments in combating corruption, minimizing discrepancies, and promoting a clear and transparent administration. Here’s how:
+\---
 
-- **Automated Anomaly Detection:** By automating the process of identifying anomalies and suspicious transactions, AuditX reduces the chances of human error and corruption.
-- **Data-Driven Insights:** The platform provides data-driven insights into financial transactions, making it easier to identify and investigate potential fraud.
-- **Increased Accountability:** With detailed audit trails and reporting, AuditX increases accountability and ensures that public funds are used appropriately.
-- **Enhanced Transparency:** By providing a clear and transparent view of financial data, AuditX helps build trust and confidence in government institutions.
+\## 📑 Table of Contents
 
-## Tech Stack
+\- \[About the Project\](#-about-the-project)
 
-AuditX is built on a modern tech stack, including:
+\- \[Key Features\](#-key-features)
 
-- **Frontend:** Next.js, React, Tailwind CSS, Radix UI, Shadcn UI
-- **Backend:** Node.js, Supabase
-- **Database:** PostgreSQL
-- **Authentication:** Supabase Auth
-- **AI and Machine Learning:** Google Generative AI
-- **Deployment:** Vercel
+\- \[How It Works\](#-how-it-works-workflow)
 
-## Future Developments
+\- \[How AuditX Helps the Government of India\](#-how-auditx-helps-the-government-of-india)
 
-We are continuously working to improve AuditX and expand its capabilities. Our future roadmap includes:
+\- \[Tech Stack\](#-tech-stack)
 
-- **Advanced AI Models:** Integrating more advanced AI and machine learning models for even more accurate fraud detection.
-- **Blockchain Integration:** Exploring the use of blockchain technology to enhance data security and transparency.
-- **Mobile Application:** Developing a mobile application for on-the-go access to the AuditX platform.
-- **Multi-language Support:** Adding support for multiple languages to make the platform accessible to a global audience.
+\- \[Getting Started\](#-getting-started)
 
-## Team Members
+\- \[Environment Variables\](#-environment-variables)
 
-- **John Doe:** Project Lead
-- **Jane Smith:** Lead Developer
-- **Peter Jones:** AI/ML Engineer
-- **Mary Johnson:** UI/UX Designer
+\- \[Future Developments\](#-future-developments)
 
+\- \[The Team\](#-the-team)
+
+\- \[Acknowledgements\](#-acknowledgements)
+
+\---
+
+\## 📖 About the Project
+
+AuditX serves as a powerful tool to combat corruption, improve accountability, and promote transparent financial governance.
+
+\### \*\*Why AuditX?\*\*
+
+\- 🤖 \*\*Automated Anomaly Detection\*\* — eliminates bias and human error
+
+\- 📊 \*\*Data-Driven Insights\*\* — deep visibility into spending
+
+\- ⚖️ \*\*Accountability\*\* — immutable audit trails
+
+\- 👁️ \*\*Transparency\*\* — clear financial monitoring
+
+\---
+
+\## 🚀 Key Features
+
+\### 📄 Document Upload & AI Analysis
+
+\- Drag-and-drop invoices, PDFs, images, spreadsheets
+
+\- Google Gemini AI extracts:
+
+\- Vendor Name
+
+\- Dates
+
+\- Amounts
+
+\- Line Items
+
+\- Automatic \*\*Fraud Risk Scoring (0–100)\*\*
+
+\- Secure storage in Supabase
+
+\### 🤖 AI Copilot
+
+Ask natural-language questions:
+
+\- “Which vendors have the highest risk?”
+
+\- “Show transactions above ₹10 lakhs last month.”
+
+\### 🚨 Fraud Detection & Alerts
+
+\- Real-time 24/7 AI monitoring
+
+\- Non-linear fraud pattern detection
+
+\- Instant notifications for high-risk events
+
+\### 📰 Real-Time News Intelligence
+
+\- Global fraud & corruption news (50+ sources)
+
+\- India-specific updates from CAG, CBI, regulators
+
+\### 📈 Analytics Dashboard
+
+\- Real-time KPIs
+
+\- Cross-ministry comparisons
+
+\- Vendor performance & risk profiling
+
+\### ⚖️ Compliance & Case Management
+
+\- Track violations
+
+\- Full case history
+
+\- AI-generated audit reports
+
+\---
+
+\## 🔄 How It Works (Workflow)
+
+1\. \*\*Login & Access Dashboard\*\*
+
+2\. \*\*Upload Financial Documents\*\*
+
+3\. \*\*AI Extracts & Scores Risk Automatically\*\*
+
+4\. \*\*Review Alerts & Insights\*\*
+
+5\. \*\*Analyze Vendor Profiles\*\*
+
+6\. \*\*Monitor Compliance\*\*
+
+7\. \*\*Ask the AI Copilot Anything\*\*
+
+8\. \*\*Generate Audit Reports\*\*
+
+9\. \*\*Stay Updated via Global & National News\*\*
+
+\---
+
+\## 🇮🇳 How AuditX Helps the Government of India
+
+AuditX aligns with India's vision of \*\*Digital India\*\*, \*\*Good Governance\*\*, and \*\*Atmanirbhar Bharat\*\* by ensuring every taxpayer Rupee reaches its rightful destination.
+
+\### 🏛 Strategic Government Use Cases
+
+\#### \*\*1. Strengthening CAG & CBI\*\*
+
+\- AI pre-screens thousands of invoices instantly
+
+\- Flags ghost vendors, duplicate payments, inflated bills
+
+\#### \*\*2. DBT (Direct Benefit Transfer) Security\*\*
+
+\- Detects:
+
+\- Ghost beneficiaries
+
+\- Identity fraud
+
+\- Duplicate/fake payouts
+
+\#### \*\*3. Public Procurement Integrity\*\*
+
+\- Analyzes tender patterns to detect:
+
+\- Bid-rigging
+
+\- Cartelization
+
+\- Circular payments
+
+\#### \*\*4. GST Fraud Detection\*\*
+
+\- Cross-matches invoices
+
+\- Identifies fake input tax credit claims
+
+\- Detects circular trading networks
+
+\#### \*\*5. Department-Level Financial Oversight\*\*
+
+\- Automated risk scores
+
+\- Spending heatmaps
+
+\- Real-time anomaly dashboards
+
+\#### \*\*6. Future: Multilingual Support\*\*
+
+\- Hindi, Telugu, Tamil, and more for state-level auditors
+
+\---
+
+\## 💻 Tech Stack
+
+| Component | Technology |
+
+|--------------|------------|
+
+| Frontend | Next.js 14, React, Tailwind CSS, Radix UI, Shadcn UI |
+
+| Backend | Node.js, Next.js Server Actions |
+
+| Database | Supabase (PostgreSQL) |
+
+| Auth | Supabase Auth |
+
+| AI / ML | Google Gemini AI, Python (planned) |
+
+| Hosting | Vercel |
+
+| External APIs| NewsAPI, Google OCR |
+
+\---
+
+\## 🏁 Getting Started
+
+\### \*\*Prerequisites\*\*
+
+\- Node.js 18+
+
+\- npm / yarn
+
+\- Supabase account
+
+\- Google Cloud Gemini API access
+
+\### \*\*Installation\*\*
+
+\`\`\`bash
+
+git clone https://github.com/your-repo/auditx.git
+
+cd auditx
+
+npm install
+
+npm run dev
+
+Access the app at:
+
+👉 http://localhost:3000
+
+🔐 Environment Variables
+
+Create .env.local:
+
+\`\`\`dotenv
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+# Google Gemini
+GOOGLE_API_KEY=your_gemini_api_key
+# NewsAPI
+NEWS_API_KEY=your_news_api_key
+\`\`\`
+
+🔮 Future Developments
+
+⛓️ Blockchain-based audit trails
+
+📱 Mobile App for auditors
+
+🧠 Custom LLMs for financial regulations
+
+🌐 Regional language support
+
+👥 Meet the Team
+
+
+
+V C Premchand Yadav — VP, Team Leader & Chief Developer
+
+P R Kiran Kumar Reddy — AI Generalist & Product Strategist
+
+Edupulapati Sai Praneeth — AI/ML & Deep Learning Engineer
+
+C R Mohith Reddy — Backend Developer
+
+K Sri Harsha Vardhan — Testing & Model Optimization
+
+Liel Stephen — Data Analyst & Visualization Specialist
+
+🙏 Acknowledgements
+
+Special thanks to the platforms that made AuditX possible:
+
+Vercel — Hosting
+
+Google Gemini AI — Core intelligence
+
+Supabase — Backend + Auth
+
+Google Antigravity — Agentic AI based code editor
+
+ChatGPT — Debugging, architecture refinement, and development support
+
+Made with ❤️ and 🤖 in India
