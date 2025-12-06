@@ -7,8 +7,6 @@
  
 ![](https://img.shields.io/badge/License-MIT-blue) 
  
-![](https://img.shields.io/badge/Stack-Next.js | Supabase | Gemini AI-orange) 
- 
 _"Transparency is the currency of trust."_ 
  
 AuditX is a comprehensive, AI-powered platform designed to detect and prevent **fraud, waste, and abuse** in government and enterprise financial operations. 
