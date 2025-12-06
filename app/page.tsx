@@ -349,14 +349,15 @@ export default function LandingPage() {
                 </p>
               </div>
 
+              {/* Updated Kiran's role */}
               <div className="text-center p-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm">
                 <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
                   <span className="text-white font-bold text-xl">PR</span>
                 </div>
                 <h4 className="font-bold text-lg mb-1">P R Kiran Kumar Reddy</h4>
-                <p className="text-sm font-semibold text-foreground mb-2">Backend Developer</p>
+                <p className="text-sm font-semibold text-foreground mb-2">AI Generalist & Product Development Team</p>
                 <p className="text-xs text-muted-foreground">
-                  Database design, API development, and security implementation
+                  Cross-functional AI development, product strategy, and innovation
                 </p>
               </div>
 
@@ -393,14 +394,15 @@ export default function LandingPage() {
                 </p>
               </div>
 
+              {/* Updated Harsha's role */}
               <div className="text-center p-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm">
                 <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
                   <span className="text-white font-bold text-xl">KH</span>
                 </div>
                 <h4 className="font-bold text-lg mb-1">K Sri Harsha Vardhan</h4>
-                <p className="text-sm font-semibold text-foreground mb-2">QA Engineer</p>
+                <p className="text-sm font-semibold text-foreground mb-2">Testing & Deep Learning Engineer</p>
                 <p className="text-xs text-muted-foreground">
-                  Testing, quality assurance, and performance optimization
+                  Quality assurance, model testing, and deep learning optimization
                 </p>
               </div>
             </div>
