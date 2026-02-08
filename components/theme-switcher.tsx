@@ -2,7 +2,7 @@
 import { useTheme } from "@/components/theme-provider"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Palette, Sparkles, Sun, Moon, Flag, Zap, Crown, Building2, Cpu } from "lucide-react"
+import { Palette, Sparkles, Sun, Moon, Flag, Zap, Crown, Building2, Cpu, Monitor, Globe } from "lucide-react"
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
@@ -77,6 +77,16 @@ export function ThemeSwitcher() {
           <Cpu className="h-4 w-4" />
           <span>AI InfraTech</span>
           {theme === "tech" && <span className="ml-auto text-primary">✓</span>}
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("legacy")} className="gap-2">
+          <Monitor className="h-4 w-4" />
+          <span>Legacy System</span>
+          {theme === "legacy" && <span className="ml-auto text-primary">✓</span>}
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("vintage")} className="gap-2">
+          <Globe className="h-4 w-4" />
+          <span>Vintage Web</span>
+          {theme === "vintage" && <span className="ml-auto text-primary">✓</span>}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
