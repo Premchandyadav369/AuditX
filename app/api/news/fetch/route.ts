@@ -151,7 +151,7 @@ function getFallbackArticles() {
     {
       title: "Audit Report Reveals Irregularities in Public Health Spending",
       summary:
-        "Government auditors find significant discrepancies in healthcare procurement, with potential losses exceeding $50 million.",
+        "Government auditors find significant discrepancies in healthcare procurement, with potential losses exceeding ₹500 crore.",
       source: "The Guardian",
       category: "government-spending",
       country: "International",

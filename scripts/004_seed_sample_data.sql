@@ -31,7 +31,7 @@ ON CONFLICT (case_number) DO NOTHING;
 
 -- Insert sample policy violations
 INSERT INTO public.policy_violations (transaction_id, policy_name, policy_description, violation_type, severity, status) VALUES
-  ((SELECT id FROM public.transactions WHERE invoice_number = 'INV-2024-002'), 'Single Transaction Limit', 'Transactions over $200,000 require board approval', 'Approval Threshold Exceeded', 'high', 'active'),
-  ((SELECT id FROM public.transactions WHERE invoice_number = 'INV-2024-005'), 'Competitive Bidding Required', 'Contracts over $50,000 require 3 competitive bids', 'Missing Documentation', 'high', 'active'),
+  ((SELECT id FROM public.transactions WHERE invoice_number = 'INV-2024-002'), 'Single Transaction Limit', 'Transactions over ₹2,00,00,000 require board approval', 'Approval Threshold Exceeded', 'high', 'active'),
+  ((SELECT id FROM public.transactions WHERE invoice_number = 'INV-2024-005'), 'Competitive Bidding Required', 'Contracts over ₹50,00,000 require 3 competitive bids', 'Missing Documentation', 'high', 'active'),
   ((SELECT id FROM public.transactions WHERE invoice_number = 'INV-2024-008'), 'Budget Allocation', 'Transaction exceeds quarterly departmental budget', 'Budget Violation', 'medium', 'active')
 ON CONFLICT DO NOTHING;
