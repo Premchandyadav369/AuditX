@@ -43,50 +43,72 @@ AuditX serves as a powerful tool to combat corruption, improve accountability, a
  
 --- 
  
-## 🚀 Key Features 
- 
-### 📄 Document Upload & AI Analysis 
- 
-- Drag-and-drop invoices, PDFs, images, spreadsheets 
-- Google Gemini AI extracts: 
-  - Vendor Name 
-  - Dates 
-  - Amounts 
-  - Line Items 
-- Automatic **Fraud Risk Scoring (0–100)** 
-- Secure storage in Supabase 
- 
-### 🤖 AI Copilot 
- 
-Ask natural-language questions: 
- 
-- “Which vendors have the highest risk?” 
-- “Show transactions above ₹10 lakhs last month.” 
- 
-### 🚨 Fraud Detection & Alerts 
- 
-- Real-time 24/7 AI monitoring 
-- Non-linear fraud pattern detection 
-- Instant notifications for high-risk events 
- 
-### 📰 Real-Time News Intelligence 
- 
-- Global fraud & corruption news (50+ sources) 
-- India-specific updates from CAG, CBI, regulators 
- 
-### 📈 Analytics Dashboard 
- 
-- Real-time KPIs 
-- Cross-ministry comparisons 
-- Vendor performance & risk profiling 
- 
-### ⚖️ Compliance & Case Management 
- 
-- Track violations 
-- Full case history 
-- AI-generated audit reports 
- 
---- 
+## ✨ Key Features
+
+### 🔍 Intelligent Document Analysis
+- Upload invoices, PDFs, images, and spreadsheets
+- AI-powered OCR with automatic data extraction
+- Fraud risk scoring (0–100) per document
+- Secure cloud storage (Supabase)
+
+### 🤖 AI Copilot
+- Natural language querying of audit data
+- Ask questions like *“Top high-risk vendors?”*
+- Instant insights powered by AI
+
+### 🚨 Fraud Detection & Alerts
+- Continuous transaction monitoring
+- Non-linear anomaly and fraud pattern detection
+- Real-time alerts for high-risk events
+
+### 📊 Advanced Analytics Dashboard
+- Real-time KPIs and fraud trends
+- Department and vendor risk scores
+- Interactive charts and comparisons
+
+### 👥 Vendor Risk Profiling
+- Vendor transaction history analysis
+- Risk ratings and behavioral patterns
+- Detection of suspicious vendor relationships
+
+### ⚖️ Compliance & Case Management
+- End-to-end investigation tracking
+- Regulatory compliance monitoring
+- Complete audit trail and case history
+
+### 📰 Real-Time Fraud Intelligence
+- Aggregated global and India-specific fraud news
+- Regulatory and policy change tracking
+- Early warning of emerging fraud trends
+
+### 📈 AI Report Generation
+- Automated audit and fraud reports
+- Executive-ready summaries
+- Export in multiple formats
+
+### 🔎 Advanced Search & Filtering
+- Full-text search across documents and data
+- Smart filters for vendors, cases, and transactions
+
+### 🌐 Live Collaboration
+- Multi-user access with real-time updates
+- Team collaboration on investigations
+
+---
+
+## 🚀 Advanced Capabilities
+- Anomaly & duplicate detection
+- Budget variance and spending analysis
+- Network graph fraud visualization
+- Predictive fraud risk modeling
+- Contract and policy compliance validation
+- Batch document and transaction processing
+- Multi-factor authentication (MFA)
+
+---
+
+AuditX delivers **AI-powered fraud prevention, compliance intelligence, and audit automation** for enterprise and government-scale financial systems.
+
  
 ## 🔄 How It Works (Workflow) 
  
