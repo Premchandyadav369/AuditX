@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   try {
     const { reportType, dateRange, department, filters } = await req.json()
 
-    const supabase = await createServerClient()
+    const supabase = createServerClient()
 
     // Fetch comprehensive data based on filters
     let query = supabase

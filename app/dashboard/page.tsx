@@ -4,20 +4,7 @@ import { DashboardNav } from "@/components/dashboard-nav"
 import { KpiCard } from "@/components/kpi-card"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import {
-  Activity,
-  AlertTriangle,
-  IndianRupee,
-  Shield,
-  ChevronRight,
-  Newspaper,
-  TrendingUp,
-  Brain,
-  Search,
-  Zap,
-  FileText,
-  Upload,
-} from "lucide-react"
+import { Activity, AlertTriangle, IndianRupee, Shield, ChevronRight, Newspaper, TrendingUp } from "lucide-react"
 import {
   BarChart,
   Bar,
@@ -31,8 +18,6 @@ import {
   Line,
   Legend,
 } from "recharts"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
 
 const fraudData = [
   { month: "Jan", detected: 12, prevented: 10 },
@@ -100,13 +85,6 @@ const recentNews = [
 
 const riskScore = 67
 
-const quickActions = [
-  { title: "Ask AI Copilot", icon: Brain, href: "/dashboard/ai-copilot", color: "text-blue-500" },
-  { title: "Smart Search", icon: Search, href: "/dashboard/smart-search", color: "text-purple-500" },
-  { title: "Predict Risk", icon: TrendingUp, href: "/dashboard/predictive", color: "text-orange-500" },
-  { title: "Upload Audit", icon: Upload, href: "/dashboard/upload", color: "text-green-500" },
-]
-
 export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -114,109 +92,63 @@ export default function DashboardPage() {
 
       <main className="ml-64 p-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">Command Center</h1>
-            <p className="text-muted-foreground">Unified audit intelligence and fraud monitoring</p>
-          </div>
-          <div className="flex gap-3">
-            <Button variant="outline" asChild>
-              <Link href="/dashboard/settings">
-                <Shield className="w-4 h-4 mr-2" />
-                Security Status
-              </Link>
-            </Button>
-            <Button className="holographic-gradient glow-blue" asChild>
-              <Link href="/dashboard/ai-copilot">
-                <Brain className="w-4 h-4 mr-2" />
-                Launch Copilot
-              </Link>
-            </Button>
-          </div>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-foreground mb-2">Dashboard Overview</h1>
+          <p className="text-muted-foreground">Real-time fraud detection and compliance monitoring</p>
         </div>
 
-        {/* Top Section: Risk Score & Quick Actions */}
-        <div className="grid lg:grid-cols-3 gap-6 mb-8">
-          <Card className="lg:col-span-2 p-6 bg-gradient-to-br from-destructive/10 via-background to-background border-destructive/20 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-              <AlertTriangle className="w-32 h-32" />
-            </div>
-            <div className="flex items-center justify-between relative z-10">
-              <div className="flex items-center gap-6">
-                <div className="w-24 h-24 rounded-full border-4 border-destructive/30 flex items-center justify-center bg-background/50 backdrop-blur-sm">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-foreground">{riskScore}</div>
-                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Risk Index</div>
-                  </div>
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-foreground mb-1">Risk Level: Elevated</h2>
-                  <p className="text-muted-foreground mb-4 max-w-md">
-                    System has detected 15 active alerts and 3 high-probability fraud patterns in the last 24 hours.
-                  </p>
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="destructive" asChild>
-                      <Link href="/dashboard/alerts">Review Alerts</Link>
-                    </Button>
-                    <Button size="sm" variant="outline" asChild>
-                      <Link href="/dashboard/fraud-patterns">Analyze Patterns</Link>
-                    </Button>
-                  </div>
+        {/* Risk Score Banner */}
+        <Card className="p-6 mb-8 bg-gradient-to-r from-destructive/10 to-destructive/5 border-destructive/30">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-20 h-20 rounded-full border-4 border-destructive/30 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-foreground">{riskScore}</div>
+                  <div className="text-xs text-muted-foreground">Risk</div>
                 </div>
               </div>
+              <div>
+                <h2 className="text-xl font-bold text-foreground mb-1">Current Risk Level: Medium-High</h2>
+                <p className="text-muted-foreground">15 active fraud alerts require attention</p>
+              </div>
             </div>
-          </Card>
-
-          <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50">
-            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
-              <Zap className="w-4 h-4 text-primary" />
-              Quick Actions
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
-              {quickActions.map((action, i) => (
-                <Link
-                  key={i}
-                  href={action.href}
-                  className="flex flex-col items-center justify-center p-4 rounded-xl border border-border/50 bg-background/50 hover:bg-accent hover:border-primary/30 transition-all group text-center"
-                >
-                  <action.icon className={cn("w-6 h-6 mb-2 group-hover:scale-110 transition-transform", action.color)} />
-                  <span className="text-xs font-medium text-foreground">{action.title}</span>
-                </Link>
-              ))}
-            </div>
-          </Card>
-        </div>
+            <Button className="holographic-gradient glow-blue">
+              View All Alerts
+              <ChevronRight className="ml-2 w-4 h-4" />
+            </Button>
+          </div>
+        </Card>
 
         {/* KPI Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <KpiCard
-            title="Transactions Analyzed"
+            title="Total Transactions Analyzed"
             value="45,892"
-            subtitle="Real-time monitoring"
+            subtitle="This month"
             icon={Activity}
-            trend={{ value: "12.5% vs last month", positive: true }}
+            trend={{ value: "12.5% from last month", positive: true }}
           />
           <KpiCard
-            title="Potential Fraud"
-            value="₹4.2Cr"
-            subtitle="Risk exposure"
+            title="Fraud Flags"
+            value="28"
+            subtitle="Active alerts"
             icon={AlertTriangle}
-            trend={{ value: "5 new critical", positive: false }}
+            trend={{ value: "8 new today", positive: false }}
             className="border-destructive/30"
           />
           <KpiCard
-            title="Savings Realized"
+            title="Estimated Savings"
             value="₹12.8Cr"
-            subtitle="Prevention ROI"
+            subtitle="Fraud prevented"
             icon={IndianRupee}
             trend={{ value: "₹2.4Cr this month", positive: true }}
           />
           <KpiCard
-            title="Compliance"
-            value="94.2%"
-            subtitle="Overall score"
+            title="Compliance Score"
+            value="94%"
+            subtitle="Across all departments"
             icon={Shield}
-            trend={{ value: "2.1% improvement", positive: true }}
+            trend={{ value: "2% improvement", positive: true }}
           />
         </div>
 
@@ -224,14 +156,9 @@ export default function DashboardPage() {
         <div className="grid lg:grid-cols-2 gap-6 mb-8">
           {/* Fraud Detection Trends */}
           <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Intelligence Trends</h3>
-                <p className="text-sm text-muted-foreground">Fraud detection vs. prevention performance</p>
-              </div>
-              <Button variant="ghost" size="icon">
-                <FileText className="w-4 h-4" />
-              </Button>
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold text-foreground mb-1">Fraud Detection Trends</h3>
+              <p className="text-sm text-muted-foreground">Monthly detected vs prevented fraud cases</p>
             </div>
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={fraudData}>
@@ -253,8 +180,6 @@ export default function DashboardPage() {
                   stroke="oklch(0.58 0.18 252)"
                   strokeWidth={2}
                   name="Detected"
-                  dot={{ r: 4 }}
-                  activeDot={{ r: 6 }}
                 />
                 <Line
                   type="monotone"
@@ -262,7 +187,6 @@ export default function DashboardPage() {
                   stroke="oklch(0.65 2.5 195)"
                   strokeWidth={2}
                   name="Prevented"
-                  dot={{ r: 4 }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -270,12 +194,9 @@ export default function DashboardPage() {
 
           {/* Department Risk Distribution */}
           <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Predictive Risk Exposure</h3>
-                <p className="text-sm text-muted-foreground">Projected risk scores by department</p>
-              </div>
-              <Badge className="bg-primary/20 text-primary border-primary/30">AI PROJECTED</Badge>
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold text-foreground mb-1">High-Risk Departments</h3>
+              <p className="text-sm text-muted-foreground">Risk score by department</p>
             </div>
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={departmentRisk} layout="vertical">
@@ -306,86 +227,83 @@ export default function DashboardPage() {
           </Card>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          {/* Recent Alerts */}
-          <Card className="lg:col-span-2 p-6 bg-card/50 backdrop-blur-sm border-border/50">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">Critical Anomalies</h3>
-                <p className="text-sm text-muted-foreground">Live feed of high-risk transactions</p>
-              </div>
-              <Button variant="outline" size="sm" asChild>
-                <Link href="/dashboard/alerts">View All</Link>
-              </Button>
+        {/* Recent Alerts */}
+        <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground mb-1">Recent Fraud Alerts</h3>
+              <p className="text-sm text-muted-foreground">Latest suspicious activities detected by AI</p>
             </div>
+            <Button variant="outline" size="sm">
+              View All
+            </Button>
+          </div>
 
-            <div className="space-y-4">
-              {recentAlerts.map((alert) => (
-                <div
-                  key={alert.id}
-                  className="flex items-center justify-between p-4 rounded-lg border border-border/50 hover:border-primary/30 transition-all bg-background/50 group"
-                >
-                  <div className="flex items-center gap-4">
-                    <div
-                      className={`w-2 h-2 rounded-full ${alert.risk === "high" ? "bg-destructive animate-pulse" : "bg-chart-2"}`}
-                    />
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="font-semibold text-foreground">{alert.type}</span>
-                        <span
-                          className={`text-[10px] px-2 py-0.5 rounded-full font-bold tracking-wider ${
-                            alert.risk === "high" ? "bg-destructive/10 text-destructive" : "bg-chart-2/10 text-chart-2"
-                          }`}
-                        >
-                          {alert.risk.toUpperCase()}
-                        </span>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        {alert.vendor} • <span className="text-foreground font-medium">{alert.amount}</span>
-                      </p>
+          <div className="space-y-4">
+            {recentAlerts.map((alert) => (
+              <div
+                key={alert.id}
+                className="flex items-center justify-between p-4 rounded-lg border border-border/50 hover:border-primary/30 transition-all bg-background/50"
+              >
+                <div className="flex items-center gap-4">
+                  <div className={`w-2 h-2 rounded-full ${alert.risk === "high" ? "bg-destructive" : "bg-chart-2"}`} />
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-semibold text-foreground">{alert.type}</span>
+                      <span
+                        className={`text-xs px-2 py-0.5 rounded-full ${
+                          alert.risk === "high" ? "bg-destructive/10 text-destructive" : "bg-chart-2/10 text-chart-2"
+                        }`}
+                      >
+                        {alert.risk.toUpperCase()}
+                      </span>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs text-muted-foreground">{alert.time}</span>
-                    <Button size="sm" variant="ghost" className="opacity-0 group-hover:opacity-100 transition-opacity">
-                      Investigate
-                    </Button>
+                    <p className="text-sm text-muted-foreground">
+                      {alert.vendor} • {alert.amount}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </Card>
-
-          {/* Global News Feed */}
-          <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h3 className="text-lg font-semibold text-foreground mb-1 flex items-center gap-2">
-                  <Newspaper className="w-5 h-5 text-primary" />
-                  Global Intelligence
-                </h3>
-                <p className="text-sm text-muted-foreground">Fraud & compliance feed</p>
+                <div className="flex items-center gap-4">
+                  <span className="text-xs text-muted-foreground">{alert.time}</span>
+                  <Button size="sm" variant="outline">
+                    Investigate
+                  </Button>
+                </div>
               </div>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="/dashboard/news">
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-              </Button>
-            </div>
+            ))}
+          </div>
+        </Card>
 
-            <div className="space-y-4">
-              {recentNews.map((news, index) => (
-                <div key={index} className="group cursor-pointer">
-                  <div className="flex items-start gap-3 mb-2">
-                    <TrendingUp className="w-4 h-4 text-primary mt-1 shrink-0 group-hover:scale-110 transition-transform" />
-                    <h4 className="text-sm font-medium text-foreground leading-tight group-hover:text-primary transition-colors">
-                      {news.title}
-                    </h4>
-                  </div>
-                  <div className="flex items-center justify-between text-[10px] text-muted-foreground pl-7">
-                    <span>{news.source} • {news.time}</span>
+        {/* Real-Time News Intelligence Widget */}
+        <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 mt-8">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground mb-1 flex items-center gap-2">
+                <Newspaper className="w-5 h-5 text-primary" />
+                Global Intelligence Feed
+              </h3>
+              <p className="text-sm text-muted-foreground">Latest fraud and compliance news worldwide</p>
+            </div>
+            <Button variant="outline" size="sm" onClick={() => (window.location.href = "/dashboard/news")}>
+              View All News
+            </Button>
+          </div>
+
+          <div className="space-y-3">
+            {recentNews.map((news, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-3 p-3 rounded-lg border border-border/50 hover:border-primary/30 transition-all bg-background/50"
+              >
+                <TrendingUp className="w-4 h-4 text-primary mt-1 shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-sm font-medium text-foreground mb-1 leading-tight">{news.title}</h4>
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <span>{news.source}</span>
+                    <span>•</span>
+                    <span>{news.time}</span>
                     <span
-                      className={`px-1.5 py-0.5 rounded uppercase font-bold tracking-tighter ${
+                      className={`px-2 py-0.5 rounded-full ${
                         news.category === "fraud"
                           ? "bg-destructive/10 text-destructive"
                           : news.category === "investigation"
@@ -396,24 +314,12 @@ export default function DashboardPage() {
                       {news.category}
                     </span>
                   </div>
-                  {index < recentNews.length - 1 && <div className="mt-4 border-b border-border/30" />}
                 </div>
-              ))}
-              <Button variant="outline" className="w-full mt-2 text-xs h-8" asChild>
-                <Link href="/dashboard/news">View Global Feed</Link>
-              </Button>
-            </div>
-          </Card>
-        </div>
+              </div>
+            ))}
+          </div>
+        </Card>
       </main>
     </div>
-  )
-}
-
-function Badge({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <span className={cn("px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider border", className)}>
-      {children}
-    </span>
   )
 }
