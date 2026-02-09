@@ -149,10 +149,10 @@ AuditX aligns with India's vision of **Digital India**, **Good Governance**, and
  
 | Component | Technology | 
 |--------------|------------| 
-| Frontend | Next.js 14, React, Tailwind CSS, Radix UI, Shadcn UI | 
+| Frontend | Next.js 16, React 19, Tailwind CSS, Radix UI, Shadcn UI |
 | Backend | Node.js, Next.js Server Actions | 
 | Database | Supabase (PostgreSQL) | 
-| Auth | Supabase Auth | 
+| Auth | Supabase Auth (@supabase/ssr) |
 | AI / ML | Google Gemini AI, Python (planned) | 
 | Hosting | Vercel | 
 | External APIs| NewsAPI, Google OCR | 
@@ -164,7 +164,7 @@ AuditX aligns with India's vision of **Digital India**, **Good Governance**, and
 ### **Prerequisites** 
  
 - Node.js 18+ 
-- npm / yarn 
+- pnpm (recommended) or npm
 - Supabase account 
 - Google Cloud Gemini API access 
  
@@ -173,8 +173,8 @@ AuditX aligns with India's vision of **Digital India**, **Good Governance**, and
 ```bash 
 git clone https://github.com/your-repo/auditx.git 
 cd auditx 
-npm install 
-npm run dev 
+pnpm install
+pnpm run dev
 ``` 
  
 Access the app at: 👉 http://localhost:3000 
