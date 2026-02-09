@@ -1,17 +1,13 @@
 ![AuditX Logo](https://i.ibb.co/W4Gfc2p8/auditx1.jpg)
  
 🛡️ AuditX: AI-Powered Fraud Detection & Prevention Platform 
-============================================================ 
- 
-![](https://img.shields.io/badge/Status-Active-success) 
- 
-![](https://img.shields.io/badge/License-MIT-blue) 
+============================================================  
  
 _"Transparency is the currency of trust."_ 
  
 AuditX is a comprehensive,ground breaking, AI-powered platform designed to detect and prevent **fraud, waste, and abuse** in government and enterprise financial operations. 
  
-By leveraging **Google Gemini AI**, advanced analytics, and anomaly detection, AuditX ensures **financial integrity, accountability, and transparency**. 
+By leveraging **Google Gemini AI/Groq**, advanced analytics, and anomaly detection, AuditX ensures **financial integrity, accountability, and transparency**. 
  
 --- 
  
