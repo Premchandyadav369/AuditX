@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createBrowserClient } from '@/lib/supabase/client'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Zap, TrendingUp, AlertTriangle, CheckCircle2 } from 'lucide-react'
@@ -15,7 +15,7 @@ export default function VendorIntelligence() {
     verified: 0,
     total: 0,
   })
-  const supabase = createClientComponentClient()
+  const supabase = createBrowserClient()
 
   useEffect(() => {
     const fetchVendors = async () => {
