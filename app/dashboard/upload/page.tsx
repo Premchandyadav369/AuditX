@@ -153,7 +153,7 @@ export default function UploadPage() {
 
         console.log("[v0] Sending document to Gemini API:", uploadedFile.name)
 
-        const response = await fetch("/api/gemini/analyze-document", {
+        const response = await fetch("/api/ai/analyze-document", {
           method: "POST",
           body: formData,
         })

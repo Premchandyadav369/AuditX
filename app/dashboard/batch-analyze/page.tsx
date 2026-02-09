@@ -42,7 +42,7 @@ export default function BatchAnalyzePage() {
         type: file.type,
       }))
 
-      const response = await fetch("/api/gemini/batch-analyze", {
+      const response = await fetch("/api/ai/batch-analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ documents }),

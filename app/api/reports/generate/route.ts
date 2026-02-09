@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { createServerClient } from "@/lib/supabase/server"
 import { generateText } from "ai"
-import { groq } from "@ai-sdk/groq"
+import { model } from "@/lib/ai/model"
 
 export async function POST(request: NextRequest) {
   try {
@@ -70,7 +70,7 @@ Provide:
 Format as professional audit report.`
 
     const { text: aiSummary } = await generateText({
-      model: groq("mixtral-8x7b-32768"),
+      model,
       prompt: summaryPrompt,
       temperature: 0.5,
       maxTokens: 2000,

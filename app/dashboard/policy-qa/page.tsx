@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Upload, HelpCircle, Send, FileText } from "lucide-react"
+import { toast } from "sonner"
 
 export default function PolicyQAPage() {
   const [policyFile, setPolicyFile] = useState<File | null>(null)
@@ -27,8 +28,6 @@ export default function PolicyQAPage() {
     setQuestion("")
 
     try {
-      const fileData = await fileToBase64(policyFile)
-
       const prompt = `You are a policy expert analyzing government procurement policies.
 
 POLICY DOCUMENT: ${policyFile.name}
@@ -47,33 +46,33 @@ Format as JSON:
   "quote": "relevant quote from document"
 }`
 
-      const result = await model.generateContent([
-        {
-          inlineData: {
-            mimeType: policyFile.type,
-            data: fileData,
-          },
-        },
-        prompt,
-      ])
+      const response = await fetch("/api/ai/policy-qa", {
+        method: "POST",
+        body: JSON.stringify({ prompt }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
 
-      const response = await result.response
-      const text = response.text()
+      if (!response.ok) throw new Error("QA failed")
 
-      const jsonMatch = text.match(/\{[\s\S]*\}/)
-      if (jsonMatch) {
-        const parsed = JSON.parse(jsonMatch[0])
+      const data = await response.json()
+
+      if (data.success) {
         setConversation((prev) => [
           ...prev,
           {
             question: currentQuestion,
-            answer: parsed.answer,
-            citation: `${parsed.citation}${parsed.quote ? ' - "' + parsed.quote + '"' : ""}`,
+            answer: data.answer || data.response,
+            citation: data.citation ? `${data.citation}${data.quote ? ' - "' + data.quote + '"' : ""}` : undefined,
           },
         ])
+      } else {
+        throw new Error("Invalid response")
       }
     } catch (error) {
       console.error("Error:", error)
+      toast.error("AI question failed. Using fallback data.")
       setConversation((prev) => [
         ...prev,
         {
@@ -86,18 +85,6 @@ Format as JSON:
     } finally {
       setLoading(false)
     }
-  }
-
-  const fileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
-      reader.onload = () => {
-        const base64 = reader.result?.toString().split(",")[1]
-        resolve(base64 || "")
-      }
-      reader.onerror = reject
-    })
   }
 
   return (

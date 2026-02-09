@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
-import { groq } from "@ai-sdk/groq"
+import { model } from "@/lib/ai/model"
 
 export async function POST(req: NextRequest) {
   try {
@@ -42,9 +42,10 @@ Provide a detailed explanation in JSON format:
   "similarCases": ["brief descriptions of similar historical frauds if any"]
 }`
 
-    const result = await model.generateContent(prompt)
-    const response = await result.response
-    const text = response.text()
+    const { text } = await generateText({
+      model,
+      prompt,
+    })
 
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     const explanation = jsonMatch ? JSON.parse(jsonMatch[0]) : null

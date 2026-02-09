@@ -20,7 +20,7 @@ export default function SmartSearchPage() {
 
     setLoading(true)
     try {
-      const response = await fetch("/api/gemini/smart-search", {
+      const response = await fetch("/api/ai/smart-search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),

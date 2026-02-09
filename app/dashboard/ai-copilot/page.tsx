@@ -61,7 +61,7 @@ export default function AICopilotPage() {
         content: msg.content,
       }))
 
-      const response = await fetch("/api/gemini/ai-copilot", {
+      const response = await fetch("/api/ai/ai-copilot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

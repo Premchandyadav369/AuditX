@@ -123,7 +123,7 @@ export default function ReportsPage() {
     try {
       const template = REPORT_TEMPLATES.find((t) => t.id === selectedTemplate)
 
-      const response = await fetch("/api/gemini/generate-report", {
+      const response = await fetch("/api/ai/generate-report", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

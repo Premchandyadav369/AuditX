@@ -1,7 +1,4 @@
-import { groq } from "@ai-sdk/groq"
+import { model } from "./ai/model"
 
-// Groq model configuration for AuditX
-const genAI = groq("mixtral-8x7b-32768")
-
-export default genAI
-export { genAI }
+export default model
+export { model as genAI }
