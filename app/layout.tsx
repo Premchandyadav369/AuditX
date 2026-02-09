@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 export const metadata: Metadata = {
   title: "AuditX - AI-Powered Fraud Detection for Public Expenditure",
   description:
-    "Every transaction audited. Every rupee protected. AuditX autonomously analyzes financial documents, detects anomalies, enforces compliance, and prevents fraud using Groq AI.",
+    "Every transaction audited. Every rupee protected. AuditX autonomously analyzes financial documents, detects anomalies, enforces compliance, and prevents fraud using Google Gemini AI.",
   generator: "v0.app",
   icons: {
     icon: "/auditx-logo.jpeg",

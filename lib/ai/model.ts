@@ -1,11 +1,11 @@
-import { groq } from "@ai-sdk/groq"
+import { google } from "@ai-sdk/google"
 
-// Groq model configuration for AuditX
-// Using llama-3.3-70b-versatile for high quality or mixtral-8x7b-32768
-export const model = groq("llama-3.3-70b-versatile")
+// Google Gemini model configuration for AuditX
+// Using gemini-2.0-flash for high quality analysis and real-time operations
+export const model = google("gemini-2.0-flash")
 
 // Fast inference model for real-time operations
-export const fastModel = groq("llama-3.3-70b-versatile")
+export const fastModel = google("gemini-2.0-flash")
 
 // Standard generation options
 export const generationOptions = {

@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
     const ocrData = await performOCR(file)
 
-    // Use Groq for document analysis
+    // Use Google Gemini for document analysis
     const prompt = `You are an expert fraud auditor for the Government of India. Analyze this financial document.
 
 DOCUMENT METADATA:

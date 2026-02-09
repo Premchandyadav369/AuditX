@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    // Convert natural language to SQL query using Groq
+    // Convert natural language to SQL query using Google Gemini
     const prompt = `Convert this natural language query into a Supabase query structure:
 
 Query: "${query}"
