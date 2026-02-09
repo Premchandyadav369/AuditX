@@ -1,0 +1,114 @@
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm.
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+npm warn Unknown project config "auto-install-peers". This will stop working in the next major version of npm.
+
+> auditx-fraud-detection@0.1.0 build
+> next build
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Environments: .env.local
+
+ ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+   Creating an optimized production build ...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+ ✓ Compiled successfully in 20.8s
+   Skipping validation of types
+   Collecting page data using 3 workers ...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   Generating static pages using 3 workers (0/78) ...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   Generating static pages using 3 workers (19/78)
+   Generating static pages using 3 workers (38/78)
+   Generating static pages using 3 workers (58/78)
+ ✓ Generating static pages using 3 workers (78/78) in 1750.0ms
+   Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/ai/ai-copilot
+├ ƒ /api/ai/analyze-document
+├ ƒ /api/ai/anomaly-explainer
+├ ƒ /api/ai/batch-analyze
+├ ƒ /api/ai/comparative-analysis
+├ ƒ /api/ai/compare-documents
+├ ƒ /api/ai/contract-validation
+├ ƒ /api/ai/email-draft
+├ ƒ /api/ai/generate-report
+├ ƒ /api/ai/narrative-generator
+├ ƒ /api/ai/policy-qa
+├ ƒ /api/ai/predictive-analysis
+├ ƒ /api/ai/recommendations
+├ ƒ /api/ai/smart-search
+├ ƒ /api/company-intelligence
+├ ƒ /api/import/csv
+├ ƒ /api/metrics/dashboard
+├ ƒ /api/mfa/setup
+├ ƒ /api/mfa/verify
+├ ƒ /api/news/fetch
+├ ƒ /api/ocr/duplicate-detection
+├ ƒ /api/ocr/extract
+├ ƒ /api/ocr/vendor-analysis
+├ ƒ /api/reports/generate
+├ ○ /auth/login
+├ ○ /auth/sign-up
+├ ○ /auth/sign-up-success
+├ ○ /auth/signup
+├ ○ /dashboard
+├ ○ /dashboard/activity
+├ ○ /dashboard/ai-copilot
+├ ○ /dashboard/alerts
+├ ○ /dashboard/analytics
+├ ○ /dashboard/anomaly-detection
+├ ○ /dashboard/auto-reports
+├ ○ /dashboard/batch-analyze
+├ ○ /dashboard/benchmarking
+├ ○ /dashboard/bookmarks
+├ ○ /dashboard/budget-variance
+├ ○ /dashboard/bulk-operations
+├ ○ /dashboard/case-management
+├ ○ /dashboard/cases
+├ ○ /dashboard/collaboration
+├ ○ /dashboard/collaboration-live
+├ ○ /dashboard/company-intel
+├ ○ /dashboard/compare
+├ ○ /dashboard/compliance
+├ ○ /dashboard/contract-validation
+├ ○ /dashboard/copilot
+├ ○ /dashboard/customize
+├ ○ /dashboard/executive
+├ ○ /dashboard/fraud
+├ ○ /dashboard/fraud-patterns
+├ ○ /dashboard/heatmap
+├ ○ /dashboard/import
+├ ○ /dashboard/mfa-setup
+├ ○ /dashboard/network
+├ ○ /dashboard/network-graph
+├ ○ /dashboard/news
+├ ○ /dashboard/nlp-search
+├ ○ /dashboard/policy-qa
+├ ○ /dashboard/predictive
+├ ○ /dashboard/regulatory-compliance
+├ ○ /dashboard/report-builder
+├ ○ /dashboard/reports
+├ ○ /dashboard/search
+├ ○ /dashboard/settings
+├ ○ /dashboard/smart-search
+├ ○ /dashboard/tags
+├ ○ /dashboard/transactions
+├ ○ /dashboard/upload
+├ ○ /dashboard/vendor-intelligence
+├ ○ /dashboard/vendors
+├ ○ /dashboard/verification
+└ ○ /features
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
