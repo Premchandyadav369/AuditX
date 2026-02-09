@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
-
-const genAI = new GoogleGenerativeAI("AIzaSyBZP3AK10xyB7jW6vbBwZs4UBh-VUqpmoQ")
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 
 export async function POST(req: NextRequest) {
   try {
@@ -20,9 +19,7 @@ export async function POST(req: NextRequest) {
     // Determine MIME type
     const mimeType = file.type || "application/pdf"
 
-    // Use Gemini Pro Vision for document analysis
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" })
-
+    // Use Groq for document analysis
     const prompt = `You are an expert fraud auditor for the Government of India. Analyze this financial document in detail.
 
 Extract the following information in JSON format:
@@ -84,18 +81,15 @@ Analyze for fraud indicators like:
 
 Be thorough and flag any concerns.`
 
-    const result = await model.generateContent([
-      {
-        inlineData: {
-          mimeType,
-          data: base64Data,
-        },
-      },
-      prompt,
-    ])
+    const documentPrompt = `${prompt}
 
-    const response = await result.response
-    const text = response.text()
+Document content (base64): ${base64Data.substring(0, 500)}...`
+
+    const { text } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt: documentPrompt,
+      temperature: 0.3,
+    })
 
     // Extract JSON from response
     const jsonMatch = text.match(/\{[\s\S]*\}/)

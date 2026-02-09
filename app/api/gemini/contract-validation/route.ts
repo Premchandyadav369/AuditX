@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
-
-const genAI = new GoogleGenerativeAI("AIzaSyBZP3AK10xyB7jW6vbBwZs4UBh-VUqpmoQ")
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,8 +9,6 @@ export async function POST(req: NextRequest) {
     if (!contractData || !invoiceData) {
       return NextResponse.json({ error: "Both contract and invoice data required" }, { status: 400 })
     }
-
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
 
     const prompt = `You are a government audit expert. Compare this contract with the invoice and identify discrepancies.
 
@@ -42,9 +39,11 @@ Analyze and return JSON with:
   "summary": "brief overall assessment"
 }`
 
-    const result = await model.generateContent(prompt)
-    const response = await result.response
-    const text = response.text()
+    const { text } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt,
+      temperature: 0.3,
+    })
 
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     const validation = jsonMatch ? JSON.parse(jsonMatch[0]) : null

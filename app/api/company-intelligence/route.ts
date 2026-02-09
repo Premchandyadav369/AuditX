@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,10 +9,6 @@ export async function POST(req: NextRequest) {
     if (!companyName) {
       return NextResponse.json({ error: "Company name is required" }, { status: 400 })
     }
-
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash-exp",
-    })
 
     let prompt = ""
     if (searchType === "compliance") {
@@ -49,9 +44,11 @@ Format as JSON with sections: companyName, fraud_cases, corruption, financial_is
 Format as JSON with sections: companyName, overview, financial_health, reputation, contracts, risk_indicators, news, overall_risk_score (0-100)`
     }
 
-    const result = await model.generateContent(prompt)
-    const response = result.response
-    const text = response.text()
+    const { text } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt,
+      temperature: 0.3,
+    })
 
     // Parse JSON from response
     let data

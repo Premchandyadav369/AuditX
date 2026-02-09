@@ -1,8 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { createServerClient } from "@/lib/supabase/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 
 export async function POST(request: NextRequest) {
   try {
@@ -55,8 +54,6 @@ export async function POST(request: NextRequest) {
     if (queryError) throw queryError
 
     // Generate AI summary
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
-
     const summaryPrompt = `Generate a comprehensive audit report summary based on this data:
 
 Report Name: ${template.name}
@@ -72,8 +69,12 @@ Provide:
 
 Format as professional audit report.`
 
-    const result = await model.generateContent(summaryPrompt)
-    const aiSummary = result.response.text()
+    const { text: aiSummary } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt: summaryPrompt,
+      temperature: 0.5,
+      maxTokens: 2000,
+    })
 
     // Create report record
     const { data: report, error: reportError } = await supabase

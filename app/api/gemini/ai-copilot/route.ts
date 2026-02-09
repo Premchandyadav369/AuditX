@@ -1,8 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 import { createServerClient } from "@/lib/supabase/server"
-
-const genAI = new GoogleGenerativeAI("AIzaSyBZP3AK10xyB7jW6vbBwZs4UBh-VUqpmoQ")
 
 export async function POST(req: NextRequest) {
   try {
@@ -36,9 +35,7 @@ export async function POST(req: NextRequest) {
       recentAlerts: recentAlerts || [],
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" })
-
-    const systemPrompt = `You are AuditX AI Copilot, an expert fraud detection assistant for the Government of India audit system.
+    const prompt = `You are AuditX AI Copilot, an expert fraud detection assistant for the Government of India audit system.
 
 You have access to real-time data from the AuditX database:
 
@@ -63,18 +60,16 @@ Your capabilities:
 
 Answer the user's question using the provided data. Be specific, cite actual numbers from the data, and provide actionable insights. If you detect fraud patterns, explain them clearly.
 
-User question: ${message}`
+User question: ${message}
 
-    const chat = model.startChat({
-      history: conversationHistory.map((msg: any) => ({
-        role: msg.role === "user" ? "user" : "model",
-        parts: [{ text: msg.content }],
-      })),
+Previous conversation:
+${conversationHistory.map((msg: any) => `${msg.role}: ${msg.content}`).join("\n")}`
+
+    const { text } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt,
+      temperature: 0.5,
     })
-
-    const result = await chat.sendMessage(systemPrompt)
-    const response = await result.response
-    const text = response.text()
 
     return NextResponse.json({
       success: true,

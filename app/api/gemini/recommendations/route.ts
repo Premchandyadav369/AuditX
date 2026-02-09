@@ -1,8 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 import { createServerClient } from "@/lib/supabase/server"
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
 
 export async function GET(request: NextRequest) {
   try {
@@ -29,8 +28,6 @@ export async function GET(request: NextRequest) {
     // Get high-risk vendors
     const { data: vendors } = await supabase.from("vendors").select("*").gte("risk_score", 70).limit(10)
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
-
     const prompt = `Based on this audit system data, generate 5 smart recommendations for the auditor:
 
 Recent Activity: ${JSON.stringify(activity)}
@@ -54,8 +51,11 @@ Return as JSON array. Focus on:
 
 Only return the JSON array, no explanation.`
 
-    const result = await model.generateContent(prompt)
-    const responseText = result.response.text()
+    const { text: responseText } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt,
+      temperature: 0.3,
+    })
 
     // Extract JSON array
     const jsonMatch = responseText.match(/\[[\s\S]*\]/)

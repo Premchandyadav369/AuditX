@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
-
-const genAI = new GoogleGenerativeAI("AIzaSyBZP3AK10xyB7jW6vbBwZs4UBh-VUqpmoQ")
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,8 +9,6 @@ export async function POST(req: NextRequest) {
     if (!budgetData || !department) {
       return NextResponse.json({ error: "Budget data and department required" }, { status: 400 })
     }
-
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
 
     const prompt = `You are a financial forecasting AI for government audits. Analyze this department's budget and predict potential issues.
 

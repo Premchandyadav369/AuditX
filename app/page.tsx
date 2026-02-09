@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Shield, FileSearch, Network, Brain, Activity, BookCheck, TrendingUp, Zap } from "lucide-react"
 import { ThemeSwitcher } from "@/components/theme-switcher"
+import { HomeMetrics } from "@/components/home-metrics"
 import Image from "next/image"
 
 export default function LandingPage() {
@@ -91,6 +92,13 @@ export default function LandingPage() {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Live Metrics Dashboard */}
+      <section className="py-20 px-6 lg:px-8 bg-gradient-to-b from-background via-card/30 to-background">
+        <div className="container mx-auto">
+          <HomeMetrics />
         </div>
       </section>
 

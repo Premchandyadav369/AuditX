@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
-
-const genAI = new GoogleGenerativeAI("AIzaSyBZP3AK10xyB7jW6vbBwZs4UBh-VUqpmoQ")
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,8 +9,6 @@ export async function POST(req: NextRequest) {
     if (!entityA || !entityB || !comparisonType) {
       return NextResponse.json({ error: "Both entities and comparison type required" }, { status: 400 })
     }
-
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
 
     const prompt = `Compare these two ${comparisonType}s and provide comprehensive analysis.
 
@@ -53,9 +50,12 @@ Generate comparison in JSON:
   }
 }`
 
-    const result = await model.generateContent(prompt)
-    const response = await result.response
-    const text = response.text()
+    const { text } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt,
+      temperature: 0.5,
+      maxTokens: 4000,
+    })
 
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     const comparison = jsonMatch ? JSON.parse(jsonMatch[0]) : null

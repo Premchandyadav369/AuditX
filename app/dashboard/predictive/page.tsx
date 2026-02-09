@@ -1,14 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { TrendingUp, AlertTriangle, CheckCircle, Upload } from "lucide-react"
-import { GoogleGenerativeAI } from "@google/generative-ai"
-
-const genAI = new GoogleGenerativeAI("AIzaSyBZP3AK10xyB7jW6vbBwZs4UBh-VUqpmoQ")
 
 export default function PredictiveAnalyticsPage() {
   const [budgetFile, setBudgetFile] = useState<File | null>(null)
@@ -26,8 +22,6 @@ export default function PredictiveAnalyticsPage() {
 
     setAnalyzing(true)
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
-
       const fileData = await fileToBase64(budgetFile)
 
       const prompt = `Analyze this department budget file and predict fraud risks, overruns, and provide recommendations.

@@ -1,14 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Upload, FileCheck, AlertTriangle, CheckCircle, XCircle } from "lucide-react"
-import { GoogleGenerativeAI } from "@google/generative-ai"
-
-const genAI = new GoogleGenerativeAI("AIzaSyBZP3AK10xyB7jW6vbBwZs4UBh-VUqpmoQ")
 
 export default function ContractValidationPage() {
   const [contractFile, setContractFile] = useState<File | null>(null)
@@ -33,8 +29,6 @@ export default function ContractValidationPage() {
 
     setAnalyzing(true)
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
-
       // Read contract file
       const contractData = await fileToBase64(contractFile)
 

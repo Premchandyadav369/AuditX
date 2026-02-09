@@ -1,8 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 import { createServerClient } from "@/lib/supabase/server"
-
-const genAI = new GoogleGenerativeAI("AIzaSyBZP3AK10xyB7jW6vbBwZs4UBh-VUqpmoQ")
 
 export async function POST(req: NextRequest) {
   try {
@@ -44,8 +43,6 @@ export async function POST(req: NextRequest) {
       .select("*")
       .order("created_at", { ascending: false })
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" })
-
     const prompt = `You are a senior government audit analyst. Generate a comprehensive ${reportType} audit report.
 
 DATA SUMMARY:
@@ -75,9 +72,12 @@ Generate a professional audit report with:
 
 Format as markdown with proper headers, tables, and bullet points. Include specific numbers and percentages from the data.`
 
-    const result = await model.generateContent(prompt)
-    const response = await result.response
-    const reportContent = response.text()
+    const { text: reportContent } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt,
+      temperature: 0.5,
+      maxTokens: 4000,
+    })
 
     return NextResponse.json({
       success: true,

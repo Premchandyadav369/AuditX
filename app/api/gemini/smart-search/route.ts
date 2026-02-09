@@ -1,8 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 import { createServerClient } from "@/lib/supabase/server"
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,9 +16,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
-
-    // Convert natural language to SQL query
+    // Convert natural language to SQL query using Groq
     const prompt = `Convert this natural language query into a Supabase query structure:
 
 Query: "${query}"
@@ -41,8 +38,11 @@ Return a JSON object with:
 
 Only return the JSON, no explanation.`
 
-    const result = await model.generateContent(prompt)
-    const responseText = result.response.text()
+    const { text: responseText } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt,
+      temperature: 0.3,
+    })
 
     // Extract JSON from response
     const jsonMatch = responseText.match(/\{[\s\S]*\}/)
@@ -91,8 +91,11 @@ Results: ${JSON.stringify(data)}
 
 Be concise and highlight key insights.`
 
-    const summaryResult = await model.generateContent(summaryPrompt)
-    const summary = summaryResult.response.text()
+    const { text: summary } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt: summaryPrompt,
+      temperature: 0.3,
+    })
 
     return NextResponse.json({
       query: queryStructure,

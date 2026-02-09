@@ -3,39 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import {
-  LayoutDashboard,
-  Upload,
-  AlertTriangle,
-  Receipt,
-  Network,
-  BookCheck,
-  Settings,
-  Search,
-  Bell,
-  FolderOpen,
-  BarChart3,
-  FileBarChart,
-  Newspaper,
-  Sparkles,
-  GitCompare as FileCompare,
-  Layers,
-  FileCheck,
-  HelpCircle,
-  TrendingUp,
-  Bookmark,
-  Clock,
-  Tags,
-  MapPin,
-  Shield,
-  FileUp,
-  Brain,
-  Layout,
-  FileText,
-  Package,
-  Palette,
-  Target,
-} from "lucide-react"
+import { LayoutDashboard, Upload, AlertTriangle, Receipt, Network, BookCheck, Settings, Search, Bell, FolderOpen, BarChart3, FileBarChart, Newspaper, Sparkles, GitCompare as FileCompare, Layers, FileCheck, HelpCircle, TrendingUp, Bookmark, Clock, Tags, MapPin, Shield, FileUp, Brain, Layout, FileText, Package, Palette, Target, Users } from "lucide-react"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import Image from "next/image"
 
@@ -194,6 +162,46 @@ const navItems = [
     title: "Bulk Operations",
     href: "/dashboard/bulk-operations",
     icon: Package,
+  },
+  {
+    title: "Collaboration Live",
+    href: "/dashboard/collaboration-live",
+    icon: Users,
+  },
+  {
+    title: "Anomaly Detection",
+    href: "/dashboard/anomaly-detection",
+    icon: AlertTriangle,
+  },
+  {
+    title: "Regulatory Compliance",
+    href: "/dashboard/regulatory-compliance",
+    icon: Shield,
+  },
+  {
+    title: "Case Management",
+    href: "/dashboard/case-management",
+    icon: FileText,
+  },
+  {
+    title: "Vendor Intelligence",
+    href: "/dashboard/vendor-intelligence",
+    icon: Brain,
+  },
+  {
+    title: "Budget Variance",
+    href: "/dashboard/budget-variance",
+    icon: TrendingUp,
+  },
+  {
+    title: "Auto Reports",
+    href: "/dashboard/auto-reports",
+    icon: FileBarChart,
+  },
+  {
+    title: "NLP Search",
+    href: "/dashboard/nlp-search",
+    icon: Brain,
   },
   {
     title: "Customize Dashboard",

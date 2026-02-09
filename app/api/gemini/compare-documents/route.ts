@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GoogleGenerativeAI } from "@google/generative-ai"
-
-const genAI = new GoogleGenerativeAI("AIzaSyBZP3AK10xyB7jW6vbBwZs4UBh-VUqpmoQ")
+import { generateText } from "ai"
+import { groq } from "@ai-sdk/groq"
 
 export async function POST(req: NextRequest) {
   try {
@@ -18,8 +17,6 @@ export async function POST(req: NextRequest) {
     const bytes2 = await file2.arrayBuffer()
     const buffer1 = Buffer.from(bytes1)
     const buffer2 = Buffer.from(bytes2)
-
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" })
 
     const prompt = `You are a forensic document analyst. Compare these two financial documents and identify:
 
@@ -44,24 +41,13 @@ Provide analysis in JSON format:
   "detailedAnalysis": "comprehensive explanation"
 }`
 
-    const result = await model.generateContent([
-      {
-        inlineData: {
-          mimeType: file1.type || "application/pdf",
-          data: buffer1.toString("base64"),
-        },
-      },
-      {
-        inlineData: {
-          mimeType: file2.type || "application/pdf",
-          data: buffer2.toString("base64"),
-        },
-      },
-      prompt,
-    ])
+    const docPrompt = `${prompt}\n\nDocument 1 (base64 first 500 chars): ${buffer1.toString("base64").substring(0, 500)}...\nDocument 2 (base64 first 500 chars): ${buffer2.toString("base64").substring(0, 500)}...`
 
-    const response = await result.response
-    const text = response.text()
+    const { text } = await generateText({
+      model: groq("mixtral-8x7b-32768"),
+      prompt: docPrompt,
+      temperature: 0.3,
+    })
 
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     if (!jsonMatch) {
