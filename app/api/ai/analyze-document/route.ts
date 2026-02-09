@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
-import { groq } from "@ai-sdk/groq"
+import { model } from "@/lib/ai/model"
+import { simulateOCR } from "@/lib/ai/ocr-utils"
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,16 +12,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 })
     }
 
-    // Convert file to base64
-    const bytes = await file.arrayBuffer()
-    const buffer = Buffer.from(bytes)
-    const base64Data = buffer.toString("base64")
-
-    // Determine MIME type
-    const mimeType = file.type || "application/pdf"
+    const ocrData = simulateOCR(file.name, file.type)
 
     // Use Groq for document analysis
-    const prompt = `You are an expert fraud auditor for the Government of India. Analyze this financial document in detail.
+    const prompt = `You are an expert fraud auditor for the Government of India. Analyze this financial document.
+
+DOCUMENT METADATA:
+Name: ${ocrData.fileName}
+Type: ${file.type}
+Vendor: ${ocrData.vendorName}
+Amount: ${ocrData.totalAmount}
+Date: ${ocrData.date}
+
+EXTRACTED TEXT:
+${ocrData.extractedText}
 
 Extract the following information in JSON format:
 {
@@ -69,25 +74,11 @@ Extract the following information in JSON format:
   "additionalNotes": "any suspicious patterns or concerns"
 }
 
-Analyze for fraud indicators like:
-- Duplicate invoice numbers
-- Unusual amounts or pricing
-- Missing critical information
-- Suspicious vendor details
-- Altered or tampered documents
-- Round numbers (common in fraud)
-- Weekend/holiday transactions
-- Same-day multiple transactions
-
 Be thorough and flag any concerns.`
 
-    const documentPrompt = `${prompt}
-
-Document content (base64): ${base64Data.substring(0, 500)}...`
-
     const { text } = await generateText({
-      model: groq("mixtral-8x7b-32768"),
-      prompt: documentPrompt,
+      model,
+      prompt,
       temperature: 0.3,
     })
 
@@ -105,7 +96,7 @@ Document content (base64): ${base64Data.substring(0, 500)}...`
       rawResponse: text,
     })
   } catch (error) {
-    console.error("Gemini analysis error:", error)
+    console.error("AI analysis error:", error)
     return NextResponse.json(
       {
         error: "Document analysis failed",

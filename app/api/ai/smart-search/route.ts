@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
-import { groq } from "@ai-sdk/groq"
+import { model } from "@/lib/ai/model"
 import { createServerClient } from "@/lib/supabase/server"
 
 export async function POST(request: NextRequest) {
@@ -39,7 +39,7 @@ Return a JSON object with:
 Only return the JSON, no explanation.`
 
     const { text: responseText } = await generateText({
-      model: groq("mixtral-8x7b-32768"),
+      model,
       prompt,
       temperature: 0.3,
     })
@@ -92,7 +92,7 @@ Results: ${JSON.stringify(data)}
 Be concise and highlight key insights.`
 
     const { text: summary } = await generateText({
-      model: groq("mixtral-8x7b-32768"),
+      model,
       prompt: summaryPrompt,
       temperature: 0.3,
     })

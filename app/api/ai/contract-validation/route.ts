@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
-import { groq } from "@ai-sdk/groq"
+import { model } from "@/lib/ai/model"
+import { simulateOCR } from "@/lib/ai/ocr-utils"
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,13 +11,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Both contract and invoice data required" }, { status: 400 })
     }
 
+    const contractOCR = simulateOCR(contractData.name, contractData.type)
+    const invoiceOCR = Array.isArray(invoiceData)
+      ? invoiceData.map((inv: any) => simulateOCR(inv.name, inv.type))
+      : [simulateOCR(invoiceData.name, invoiceData.type)]
+
     const prompt = `You are a government audit expert. Compare this contract with the invoice and identify discrepancies.
 
-CONTRACT:
-${JSON.stringify(contractData, null, 2)}
+CONTRACT DATA:
+${JSON.stringify(contractOCR, null, 2)}
 
-INVOICE:
-${JSON.stringify(invoiceData, null, 2)}
+INVOICE DATA:
+${JSON.stringify(invoiceOCR, null, 2)}
 
 Analyze and return JSON with:
 {
@@ -40,7 +46,7 @@ Analyze and return JSON with:
 }`
 
     const { text } = await generateText({
-      model: groq("mixtral-8x7b-32768"),
+      model,
       prompt,
       temperature: 0.3,
     })

@@ -21,7 +21,7 @@ export default function ComparePage() {
     formData.append("file2", file2)
 
     try {
-      const response = await fetch("/api/gemini/compare-documents", {
+      const response = await fetch("/api/ai/compare-documents", {
         method: "POST",
         body: formData,
       })

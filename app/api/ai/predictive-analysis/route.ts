@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
-import { groq } from "@ai-sdk/groq"
+import { model } from "@/lib/ai/model"
+import { simulateOCR } from "@/lib/ai/ocr-utils"
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,10 +11,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Budget data and department required" }, { status: 400 })
     }
 
+    const budgetOCR = simulateOCR(budgetData.fileName || budgetData.name, budgetData.type)
+
     const prompt = `You are a financial forecasting AI for government audits. Analyze this department's budget and predict potential issues.
 
 DEPARTMENT: ${department}
-BUDGET: ${JSON.stringify(budgetData, null, 2)}
+BUDGET DATA:
+${JSON.stringify(budgetOCR, null, 2)}
+
 HISTORICAL SPENDING: ${JSON.stringify(historicalSpending || {}, null, 2)}
 
 Provide predictive analysis in JSON:
@@ -52,9 +57,10 @@ Provide predictive analysis in JSON:
   ]
 }`
 
-    const result = await model.generateContent(prompt)
-    const response = await result.response
-    const text = response.text()
+    const { text } = await generateText({
+      model,
+      prompt,
+    })
 
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     const analysis = jsonMatch ? JSON.parse(jsonMatch[0]) : null

@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
-import { groq } from "@ai-sdk/groq"
+import { model } from "@/lib/ai/model"
 import { createServerClient } from "@/lib/supabase/server"
 
 export async function POST(req: NextRequest) {
@@ -73,7 +73,7 @@ Generate a professional audit report with:
 Format as markdown with proper headers, tables, and bullet points. Include specific numbers and percentages from the data.`
 
     const { text: reportContent } = await generateText({
-      model: groq("mixtral-8x7b-32768"),
+      model,
       prompt,
       temperature: 0.5,
       maxTokens: 4000,

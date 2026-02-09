@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
-import { groq } from "@ai-sdk/groq"
+import { model } from "@/lib/ai/model"
 
 export async function POST(req: NextRequest) {
   try {
@@ -30,7 +30,7 @@ Generate email in JSON format:
 }`
 
     const { text } = await generateText({
-      model: groq("mixtral-8x7b-32768"),
+      model,
       prompt,
       temperature: 0.5,
     })
