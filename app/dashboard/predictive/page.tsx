@@ -5,7 +5,6 @@ import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { TrendingUp, AlertTriangle, CheckCircle, Upload } from "lucide-react"
-import { model } from "@/path/to/model" // Declare the model variable here
 
 export default function PredictiveAnalyticsPage() {
   const [budgetFile, setBudgetFile] = useState<File | null>(null)

@@ -2,7 +2,6 @@ import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
 import { groq } from "@ai-sdk/groq"
 import { createServerClient } from "@/lib/supabase/server"
-import genAI from "genAI" // Declared the genAI variable
 
 export async function POST(req: NextRequest) {
   try {

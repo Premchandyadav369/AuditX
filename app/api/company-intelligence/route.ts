@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
 import { groq } from "@ai-sdk/groq"
-import genAI from "path-to-genAI-module"; // Declare the genAI variable here
 
 export async function POST(req: NextRequest) {
   try {

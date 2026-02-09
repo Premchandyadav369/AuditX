@@ -5,7 +5,6 @@ import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Upload, FileCheck, AlertTriangle, CheckCircle, XCircle } from "lucide-react"
-import model from "@/app/dashboard/contract-validation/model"; // Declare the model variable
 
 export default function ContractValidationPage() {
   const [contractFile, setContractFile] = useState<File | null>(null)

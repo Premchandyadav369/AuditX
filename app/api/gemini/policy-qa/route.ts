@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
 import { groq } from "@ai-sdk/groq"
-import { model } from "path/to/model"; // Declare the model variable
 
 export async function POST(req: NextRequest) {
   try {

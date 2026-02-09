@@ -6,7 +6,6 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Upload, HelpCircle, Send, FileText } from "lucide-react"
-import model from "@/path/to/model" // Declare the model variable here
 
 export default function PolicyQAPage() {
   const [policyFile, setPolicyFile] = useState<File | null>(null)
