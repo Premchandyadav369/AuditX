@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createBrowserClient } from '@/lib/supabase/client'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -12,7 +12,7 @@ export default function CollaborationLive() {
   const [sessions, setSessions] = useState<any[]>([])
   const [activeUsers, setActiveUsers] = useState<any[]>([])
   const [channel, setChannel] = useState<RealtimeChannel | null>(null)
-  const supabase = createClientComponentClient()
+  const supabase = createBrowserClient()
 
   useEffect(() => {
     const setupRealtimeListener = async () => {
