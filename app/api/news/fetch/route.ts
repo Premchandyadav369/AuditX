@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-const NEWS_API_KEY = "1951279e101a4b2a8d9dd8069d1a9997"
+const NEWS_API_KEY = process.env.NEWS_API_KEY || "1951279e101a4b2a8d9dd8069d1a9997"
 const NEWS_API_BASE = "https://newsapi.org/v2"
 
 // Search queries for different categories
