@@ -6,10 +6,8 @@ type Theme =
   | "holographic"
   | "light"
   | "black"
-  | "google"
   | "bharat"
   | "gov"
-  | "tech"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -36,48 +34,37 @@ export function ThemeProvider({
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = React.useState<Theme>(defaultTheme)
-  const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
-    setMounted(true)
     const stored = localStorage.getItem(storageKey) as Theme | null
-    if (stored && stored !== theme) {
+    if (stored) {
       setTheme(stored)
     }
-    console.log('[v0] Theme provider mounted with theme:', stored || 'holographic')
   }, [storageKey])
 
   React.useEffect(() => {
-    if (!mounted) return
-
     const root = window.document.documentElement
 
     root.classList.remove(
       "theme-light",
       "theme-black",
-      "theme-google",
       "theme-bharat",
       "theme-gov",
-      "theme-tech",
     )
 
     if (theme === "light") {
       root.classList.add("theme-light")
     } else if (theme === "black") {
       root.classList.add("theme-black")
-    } else if (theme === "google") {
-      root.classList.add("theme-google")
     } else if (theme === "bharat") {
       root.classList.add("theme-bharat")
     } else if (theme === "gov") {
       root.classList.add("theme-gov")
-    } else if (theme === "tech") {
-      root.classList.add("theme-tech")
     }
     // holographic is the default in :root, so no class needed
 
     localStorage.setItem(storageKey, theme)
-  }, [theme, storageKey, mounted])
+  }, [theme, storageKey])
 
   const value = {
     theme,

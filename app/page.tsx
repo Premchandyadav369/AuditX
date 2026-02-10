@@ -7,9 +7,8 @@ import { HomeMetrics } from "@/components/home-metrics"
 import Image from "next/image"
 
 export default function LandingPage() {
-  console.log('[v0] Landing page rendering')
   return (
-    <div className="min-h-screen bg-background text-foreground" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 backdrop-blur-xl bg-background/80">
         <div className="container mx-auto px-6 lg:px-8">

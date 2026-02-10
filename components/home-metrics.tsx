@@ -16,24 +16,11 @@ interface DashboardMetrics {
   lastUpdated: string
 }
 
-const DEFAULT_METRICS: DashboardMetrics = {
-  totalTransactions: 45230,
-  totalAmount: 2450000000,
-  activeVendors: 1243,
-  flaggedTransactions: 342,
-  fraudCases: 28,
-  openCases: 12,
-  averageRiskScore: 32,
-  complianceViolations: 18,
-  lastUpdated: new Date().toISOString(),
-}
-
 export function HomeMetrics() {
-  const [metrics, setMetrics] = useState<DashboardMetrics>(DEFAULT_METRICS)
-  const [mounted, setMounted] = useState(false)
+  const [metrics, setMetrics] = useState<DashboardMetrics | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setMounted(true)
     fetchMetrics()
     // Refresh every 30 seconds
     const interval = setInterval(fetchMetrics, 30000)
@@ -48,13 +35,20 @@ export function HomeMetrics() {
         setMetrics(data)
       }
     } catch (error) {
-      // Use default metrics silently
+      console.error('[v0] Failed to fetch metrics:', error)
+    } finally {
+      setLoading(false)
     }
   }
 
-  // Always render metrics, no loading state
-  if (!mounted) {
-    return null
+  if (loading || !metrics) {
+    return (
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 animate-pulse">
+        {[1, 2, 3, 4].map((i) => (
+          <Card key={i} className="p-6 bg-card/50 h-32" />
+        ))}
+      </div>
+    )
   }
 
   const metricCards = [

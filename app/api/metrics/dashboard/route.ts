@@ -1,24 +1,11 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@/lib/supabase/server'
 
-// Fallback metrics when database is unavailable
-const FALLBACK_METRICS = {
-  totalTransactions: 45230,
-  totalAmount: 2450000000,
-  activeVendors: 1243,
-  flaggedTransactions: 342,
-  fraudCases: 28,
-  openCases: 12,
-  averageRiskScore: 32,
-  complianceViolations: 18,
-  lastUpdated: new Date().toISOString(),
-}
-
 export async function GET(request: NextRequest) {
   try {
     const supabase = await createServerClient()
 
-    // Fetch all metrics in parallel with timeout
+    // Fetch all metrics in parallel
     const [
       transactionRes,
       vendorRes,
@@ -39,15 +26,6 @@ export async function GET(request: NextRequest) {
         .select('id', { count: 'exact' }),
     ])
 
-    // Check if any query failed
-    if (!transactionRes.data) {
-      return NextResponse.json(FALLBACK_METRICS, {
-        headers: {
-          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
-        },
-      })
-    }
-
     // Process transactions data
     const transactions = transactionRes.data || []
     const totalTransactions = transactionRes.count || 0
@@ -59,6 +37,7 @@ export async function GET(request: NextRequest) {
         : 0
 
     // Process vendors data
+    const vendors = vendorRes.data || []
     const activeVendors = vendorRes.count || 0
 
     // Process fraud cases
@@ -88,11 +67,9 @@ export async function GET(request: NextRequest) {
     })
   } catch (error) {
     console.error('[v0] Metrics API error:', error)
-    // Return fallback metrics on error
-    return NextResponse.json(FALLBACK_METRICS, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
-      },
-    })
+    return NextResponse.json(
+      { error: 'Failed to fetch metrics' },
+      { status: 500 }
+    )
   }
 }

@@ -3,9 +3,10 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { LayoutDashboard, Upload, AlertTriangle, Receipt, BookCheck, Settings, Search, Bell, FolderOpen, BarChart3, Newspaper, Sparkles, FileCheck, Shield, FileUp, Brain, FileText } from "lucide-react"
+import { LayoutDashboard, Upload, AlertTriangle, Receipt, Network, BookCheck, Settings, Search, Bell, FolderOpen, BarChart3, FileBarChart, Newspaper, Sparkles, GitCompare as FileCompare, Layers, FileCheck, HelpCircle, TrendingUp, MapPin, Shield, FileUp, Brain, Layout, FileText, Package, Users, ChevronDown } from "lucide-react"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import Image from "next/image"
+import { useState } from "react"
 
 interface NavSection {
   title: string
@@ -43,10 +44,16 @@ const navSections: NavSection[] = [
         icon: Search,
       },
       {
+        title: "Vendor Intelligence",
+        href: "/dashboard/vendor-intelligence",
+        icon: Network,
+      },
+      {
         title: "AI Copilot",
         href: "/dashboard/ai-copilot",
         icon: Sparkles,
       },
+
     ],
   },
   {
@@ -80,9 +87,24 @@ const navSections: NavSection[] = [
         icon: BookCheck,
       },
       {
+        title: "Regulatory Compliance",
+        href: "/dashboard/regulatory-compliance",
+        icon: Shield,
+      },
+      {
         title: "Fraud & Anomalies",
         href: "/dashboard/fraud",
         icon: AlertTriangle,
+      },
+      {
+        title: "Risk Heatmap",
+        href: "/dashboard/heatmap",
+        icon: MapPin,
+      },
+      {
+        title: "Policy Q&A",
+        href: "/dashboard/policy-qa",
+        icon: HelpCircle,
       },
     ],
   },
@@ -91,16 +113,27 @@ const navSections: NavSection[] = [
     icon: BarChart3,
     items: [
       {
-        title: "Analytics",
+        title: "Analytics Dashboard",
         href: "/dashboard/analytics",
         icon: BarChart3,
       },
+      {
+        title: "Reports",
+        href: "/dashboard/reports",
+        icon: FileBarChart,
+      },
+
     ],
   },
   {
     title: "Workspace",
     icon: FolderOpen,
     items: [
+      {
+        title: "Case Management",
+        href: "/dashboard/case-management",
+        icon: FolderOpen,
+      },
       {
         title: "Transactions",
         href: "/dashboard/transactions",
@@ -110,6 +143,16 @@ const navSections: NavSection[] = [
         title: "Alerts",
         href: "/dashboard/alerts",
         icon: Bell,
+      },
+      {
+        title: "Collaboration",
+        href: "/dashboard/collaboration-live",
+        icon: Users,
+      },
+      {
+        title: "Network Graph",
+        href: "/dashboard/network-graph",
+        icon: Network,
       },
     ],
   },
@@ -128,15 +171,16 @@ const navSections: NavSection[] = [
 
 export function DashboardNav() {
   const pathname = usePathname()
-  // Keep all sections expanded by default to avoid hydration issues
-  const expandedSections: Record<string, boolean> = {
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     "Main": true,
     "Intelligence & Analysis": true,
-    "Document Operations": true,
-    "Compliance & Risk": true,
-    "Analytics & Reporting": true,
-    "Workspace": true,
-    "Settings": false,
+  })
+
+  const toggleSection = (title: string) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }))
   }
 
   return (
@@ -161,13 +205,22 @@ export function DashboardNav() {
               <div key={section.title} className="space-y-1">
                 {/* Section Header */}
                 {section.items.length > 0 && (
-                  <div className={cn(
-                    "w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide",
-                    "text-sidebar-foreground/70",
-                  )}>
+                  <button
+                    onClick={() => toggleSection(section.title)}
+                    className={cn(
+                      "w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide transition-colors",
+                      "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent/50",
+                    )}
+                  >
                     {section.icon && <section.icon className="w-4 h-4" />}
                     <span className="flex-1 text-left">{section.title}</span>
-                  </div>
+                    <ChevronDown
+                      className={cn(
+                        "w-4 h-4 transition-transform",
+                        expandedSections[section.title] ? "rotate-180" : "",
+                      )}
+                    />
+                  </button>
                 )}
 
                 {/* Section Items */}
