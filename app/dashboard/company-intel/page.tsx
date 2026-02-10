@@ -29,6 +29,7 @@ export default function CompanyIntelligencePage() {
   const [companyName, setCompanyName] = useState("")
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState<any>(null)
+  const [error, setError] = useState<string | null>(null)
   const [searchType, setSearchType] = useState<"general" | "compliance" | "misconduct">("general")
 
   const handleSearch = async () => {
@@ -36,6 +37,7 @@ export default function CompanyIntelligencePage() {
 
     setLoading(true)
     setData(null)
+    setError(null)
 
     try {
       const response = await fetch("/api/company-intelligence", {
@@ -45,9 +47,14 @@ export default function CompanyIntelligencePage() {
       })
 
       const result = await response.json()
-      setData(result)
-    } catch (error) {
-      console.error("Search failed:", error)
+      if (result.error) {
+        setError(result.error)
+      } else {
+        setData(result)
+      }
+    } catch (err: any) {
+      console.error("Search failed:", err)
+      setError("Failed to connect to the intelligence service. Please check your connection and try again.")
     } finally {
       setLoading(false)
     }
@@ -208,6 +215,26 @@ export default function CompanyIntelligencePage() {
         </CardContent>
       </Card>
 
+      {/* Error State */}
+      {error && (
+        <Card className="glass-card border-red-500/30 bg-red-500/5">
+          <CardContent className="py-6">
+            <div className="flex items-center gap-3 text-red-500">
+              <AlertCircle className="w-5 h-5" />
+              <p className="font-medium">{error}</p>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleSearch}
+              className="mt-4 border-red-500/30 hover:bg-red-500/10 text-red-500"
+            >
+              Try Again
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Loading State */}
       {loading && (
         <Card className="glass-card border-blue-500/30">
@@ -242,14 +269,13 @@ export default function CompanyIntelligencePage() {
                     <p className="text-sm text-muted-foreground mt-1">Intelligence Report Generated</p>
                   </div>
                 </div>
-                {(data.overall_risk_score || data.risk_score) &&
-                  getRiskBadge(data.overall_risk_score || data.risk_score)}
+                {data.overall_risk_score !== undefined && getRiskBadge(data.overall_risk_score)}
               </div>
             </CardContent>
           </Card>
 
           {/* Risk Score Dashboard */}
-          {(data.overall_risk_score !== undefined || data.risk_score !== undefined) && (
+          {data.overall_risk_score !== undefined && (
             <Card className="glass-card border-2">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -261,8 +287,8 @@ export default function CompanyIntelligencePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-3">
                     <div className="flex items-end gap-3">
-                      <div className={`text-7xl font-bold ${getRiskColor(data.overall_risk_score || data.risk_score)}`}>
-                        {data.overall_risk_score || data.risk_score}
+                      <div className={`text-7xl font-bold ${getRiskColor(data.overall_risk_score)}`}>
+                        {data.overall_risk_score}
                       </div>
                       <div className="mb-3">
                         <p className="text-sm text-muted-foreground">Risk Score</p>
@@ -272,15 +298,15 @@ export default function CompanyIntelligencePage() {
                     <div className="h-3 bg-muted rounded-full overflow-hidden">
                       <div
                         className={`h-full transition-all duration-1000 ${
-                          (data.overall_risk_score || data.risk_score) >= 75
+                          data.overall_risk_score >= 75
                             ? "bg-gradient-to-r from-red-500 to-red-600"
-                            : (data.overall_risk_score || data.risk_score) >= 50
+                            : data.overall_risk_score >= 50
                               ? "bg-gradient-to-r from-orange-500 to-orange-600"
-                              : (data.overall_risk_score || data.risk_score) >= 25
+                              : data.overall_risk_score >= 25
                                 ? "bg-gradient-to-r from-yellow-500 to-yellow-600"
                                 : "bg-gradient-to-r from-green-500 to-green-600"
                         }`}
-                        style={{ width: `${data.overall_risk_score || data.risk_score}%` }}
+                        style={{ width: `${data.overall_risk_score}%` }}
                       />
                     </div>
                   </div>
@@ -328,6 +354,7 @@ export default function CompanyIntelligencePage() {
             {/* Overview Tab */}
             <TabsContent value="overview" className="space-y-4">
               {data.overview && renderDataSection("Company Overview", Building2, data.overview)}
+              {data.gst_pan_status && renderDataSection("Tax Verification", Shield, data.gst_pan_status)}
               {data.financial_health && renderDataSection("Financial Health", TrendingUp, data.financial_health)}
               {data.reputation && renderDataSection("Reputation Analysis", Award, data.reputation)}
               {data.contracts && renderDataSection("Government Contracts", Briefcase, data.contracts)}
