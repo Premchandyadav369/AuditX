@@ -53,21 +53,7 @@ const navSections: NavSection[] = [
         href: "/dashboard/ai-copilot",
         icon: Sparkles,
       },
-      {
-        title: "Smart Search",
-        href: "/dashboard/smart-search",
-        icon: Brain,
-      },
-      {
-        title: "Predictive Analytics",
-        href: "/dashboard/predictive",
-        icon: TrendingUp,
-      },
-      {
-        title: "Anomaly Detection",
-        href: "/dashboard/anomaly-detection",
-        icon: AlertTriangle,
-      },
+
     ],
   },
   {
@@ -85,24 +71,9 @@ const navSections: NavSection[] = [
         icon: FileUp,
       },
       {
-        title: "Batch Analysis",
-        href: "/dashboard/batch-analyze",
-        icon: Layers,
-      },
-      {
-        title: "Contract Validation",
-        href: "/dashboard/contract-validation",
+        title: "OCR Extract",
+        href: "/dashboard/upload",
         icon: FileCheck,
-      },
-      {
-        title: "Compare Documents",
-        href: "/dashboard/compare",
-        icon: FileCompare,
-      },
-      {
-        title: "Bulk Operations",
-        href: "/dashboard/bulk-operations",
-        icon: Package,
       },
     ],
   },
@@ -151,31 +122,7 @@ const navSections: NavSection[] = [
         href: "/dashboard/reports",
         icon: FileBarChart,
       },
-      {
-        title: "Report Builder",
-        href: "/dashboard/report-builder",
-        icon: FileText,
-      },
-      {
-        title: "Executive Dashboard",
-        href: "/dashboard/executive",
-        icon: Layout,
-      },
-      {
-        title: "Auto Reports",
-        href: "/dashboard/auto-reports",
-        icon: FileBarChart,
-      },
-      {
-        title: "Department Benchmarking",
-        href: "/dashboard/benchmarking",
-        icon: BarChart3,
-      },
-      {
-        title: "Budget Variance",
-        href: "/dashboard/budget-variance",
-        icon: TrendingUp,
-      },
+
     ],
   },
   {

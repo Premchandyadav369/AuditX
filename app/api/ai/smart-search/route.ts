@@ -1,3 +1,13 @@
+import { NextResponse } from "next/server"
+
+export async function POST() {
+  return NextResponse.json(
+    { error: "This feature is temporarily unavailable. Use regular search instead." },
+    { status: 503 }
+  )
+}
+
+/*
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
 import { model } from "@/lib/ai/model"

@@ -1,13 +1,11 @@
-import { type NextRequest, NextResponse } from "next/server"
-import { generateText } from "ai"
-import { model } from "@/lib/ai/model"
+import { NextResponse } from "next/server"
 
-export async function POST(req: NextRequest) {
-  try {
-    const { documents } = await req.json()
-
-    if (!documents || !Array.isArray(documents) || documents.length === 0) {
-      return NextResponse.json({ error: "Documents array is required" }, { status: 400 })
+export async function POST() {
+  return NextResponse.json(
+    { error: "This feature is temporarily unavailable." },
+    { status: 503 }
+  )
+}
     }
 
     const results = []
