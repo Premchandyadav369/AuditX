@@ -3,6 +3,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Ensure body and html always have proper background */
+html {
+  background-color: oklch(0.12 0.02 252);
+}
+
+body {
+  background-color: oklch(0.12 0.02 252);
+  color: oklch(0.98 0.005 252);
+}
+
 :root {
   --background: oklch(0.12 0.02 252);
   --foreground: oklch(0.98 0.005 252);

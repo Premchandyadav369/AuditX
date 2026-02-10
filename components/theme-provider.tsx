@@ -36,8 +36,10 @@ export function ThemeProvider({
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = React.useState<Theme>(defaultTheme)
+  const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
+    setMounted(true)
     const stored = localStorage.getItem(storageKey) as Theme | null
     if (stored) {
       setTheme(stored)
@@ -45,6 +47,8 @@ export function ThemeProvider({
   }, [storageKey])
 
   React.useEffect(() => {
+    if (!mounted) return
+
     const root = window.document.documentElement
 
     root.classList.remove(
@@ -72,7 +76,7 @@ export function ThemeProvider({
     // holographic is the default in :root, so no class needed
 
     localStorage.setItem(storageKey, theme)
-  }, [theme, storageKey])
+  }, [theme, storageKey, mounted])
 
   const value = {
     theme,
