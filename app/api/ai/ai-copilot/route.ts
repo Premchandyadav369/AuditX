@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   try {
     const { message, conversationHistory } = await req.json()
 
-    const supabase = createServerClient()
+    const supabase = await createServerClient()
 
     // Fetch relevant context from database
     const { data: recentTransactions } = await supabase
