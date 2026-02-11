@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { LayoutDashboard, Upload, AlertTriangle, Receipt, Settings, Search, Bell, Newspaper, Sparkles, Brain, FileText, ChevronDown } from "lucide-react"
+import { LayoutDashboard, Upload, AlertTriangle, Receipt, Settings, Search, Bell, Newspaper, Sparkles, Brain, FileText, ChevronDown, Shield } from "lucide-react"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import Image from "next/image"
 import { useState } from "react"
@@ -63,6 +63,18 @@ const navSections: NavSection[] = [
         title: "Transactions",
         href: "/dashboard/transactions",
         icon: Receipt,
+      },
+    ],
+  },
+  {
+    title: "Compliance & Risk",
+    icon: Shield,
+    items: [
+      {
+        title: "Intelligence Center",
+        href: "/dashboard/compliance-risk",
+        icon: Brain,
+        description: "Vendor, Policy, Regulatory & Heatmap",
       },
     ],
   },
