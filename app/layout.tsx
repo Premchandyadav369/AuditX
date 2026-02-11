@@ -26,10 +26,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Puter.js for free unlimited OCR */}
-        <script src="https://js.puter.com/v2/"></script>
-      </head>
       <body className={`${inter.className} font-sans antialiased`}>
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
