@@ -186,20 +186,65 @@ export default function UploadPage() {
         console.log("[v0] Duplicate check result:", duplicateCheck)
 
         const fileExt = uploadedFile.name.split(".").pop()
-        const fileName = `${userId}/${Date.now()}.${fileExt}`
+        const fileName = `${userId}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
 
-        const { data: uploadData, error: uploadError } = await supabase.storage
-          .from("documents")
-          .upload(fileName, uploadedFile.file)
+        console.log("[v0] Uploading file to Supabase storage:", fileName)
 
-        if (uploadError) {
-          console.error("[v0] File upload error:", uploadError)
-          throw new Error("Failed to upload file to storage")
+        // Upload with retry logic
+        let uploadData, uploadError
+        let retries = 3
+
+        while (retries > 0) {
+          const result = await supabase.storage
+            .from("documents")
+            .upload(fileName, uploadedFile.file, {
+              cacheControl: "3600",
+              upsert: false,
+            })
+
+          uploadData = result.data
+          uploadError = result.error
+
+          if (!uploadError) {
+            console.log("[v0] File uploaded successfully:", fileName)
+            break
+          }
+
+          if (uploadError?.message?.includes("not found") || uploadError?.message?.includes("bucket")) {
+            console.error("[v0] Storage bucket issue, attempting alternative method...")
+            // Try uploading with upsert for existing bucket issues
+            const altResult = await supabase.storage
+              .from("documents")
+              .upload(fileName, uploadedFile.file, {
+                cacheControl: "3600",
+                upsert: true,
+              })
+
+            if (!altResult.error) {
+              uploadData = altResult.data
+              uploadError = null
+              console.log("[v0] File uploaded with upsert option:", fileName)
+              break
+            }
+          }
+
+          retries--
+          if (retries > 0) {
+            console.log(`[v0] Upload failed, retrying... (${retries} attempts left)`)
+            await new Promise((resolve) => setTimeout(resolve, 1000))
+          }
         }
 
-        const {
-          data: { publicUrl },
-        } = supabase.storage.from("documents").getPublicUrl(fileName)
+        if (uploadError) {
+          console.error("[v0] File upload failed after retries:", uploadError)
+          throw new Error(`Failed to upload file: ${uploadError.message || "Storage error"}`)
+        }
+
+        // Get public URL
+        const { data: urlData } = supabase.storage.from("documents").getPublicUrl(fileName)
+        const publicUrl = urlData?.publicUrl || `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/documents/${fileName}`
+
+        console.log("[v0] File public URL:", publicUrl)
 
         // Safely determine fiscal year
         const docDate = result.data?.documentDetails?.date || new Date().toISOString()
